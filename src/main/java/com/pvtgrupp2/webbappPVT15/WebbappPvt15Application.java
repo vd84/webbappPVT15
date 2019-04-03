@@ -22,6 +22,6 @@ class DemoApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello man2!";
+		return "Hello man3!";
 	}
 }
