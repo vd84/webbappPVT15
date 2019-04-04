@@ -24,6 +24,6 @@ class DemoApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello man3!";
+		return 	"templates/Login.html";
 	}
 }
