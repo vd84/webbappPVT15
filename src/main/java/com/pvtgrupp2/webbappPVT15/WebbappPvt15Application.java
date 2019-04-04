@@ -11,6 +11,8 @@ public class WebbappPvt15Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebbappPvt15Application.class, args);
+
+
 	}
 
 }
@@ -22,6 +24,6 @@ class DemoApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello man4!";
+		return "Hello man3!";
 	}
 }
