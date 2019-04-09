@@ -15,6 +15,7 @@ public class WebbappPvt15Application {
 		SpringApplication.run(WebbappPvt15Application.class, args);
 
 
+
 	}
 	@RequestMapping("/")
 	String index() {
