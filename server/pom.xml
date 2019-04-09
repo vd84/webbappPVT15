@@ -106,7 +106,7 @@
 
 		<resources>
 			<resource>
-				<directory>src/main/resources-filtered</directory>
+				<directory>server/src/main/resources-filtered</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
