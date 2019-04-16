@@ -24,4 +24,10 @@ public class WebbappPvt15ApplicationTests {
         assertEquals(true, true);
     }
 
+    @Test
+    public void dummyTest2(){
+        assertEquals(true, false);
+    }
+
+
 }
