@@ -1,11 +1,10 @@
 package WebbAppPVT15Grupp2;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootConfiguration
+
 @SpringBootApplication
 public class WebbappPvt15Application {
 
