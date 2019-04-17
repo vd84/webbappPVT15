@@ -5,3 +5,6 @@ jdk:
   - oraclejdk11
   - openjdk10
   - openjdk11
+
+notifications:
+  slack: pvt-19group2:j0Dn7A4pAMGWpE0LwNaVyYzl
