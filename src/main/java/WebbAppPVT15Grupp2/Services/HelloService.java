@@ -14,7 +14,7 @@ public class HelloService {
     @Autowired
     HelloRespository respository;
 
-    @GetMapping("/hello")
+    @GetMapping("/getAllhello")
     public Iterable<Hello> findAllHellos(){
         return respository.findAll();
     }
