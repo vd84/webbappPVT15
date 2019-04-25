@@ -15,7 +15,7 @@ public class HelloService {
 
     public static final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/hello")
     public Iterable<Hello> findAllHellos() {
         return respository.findAll();
@@ -23,7 +23,7 @@ public class HelloService {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/addHellos")
     public String createHello() {
 
