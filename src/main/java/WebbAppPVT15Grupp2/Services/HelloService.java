@@ -18,7 +18,6 @@ public class HelloService {
     public static final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
     @CrossOrigin(origins = "http://localhost:4200")
-    //@GetMapping("/hello")
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Hello> findAllHellos() {
         return respository.findAll();
