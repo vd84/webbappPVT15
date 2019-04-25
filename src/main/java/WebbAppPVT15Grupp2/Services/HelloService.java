@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/api/hello")
 public class HelloService {
     @Autowired
     HelloRespository respository;
@@ -16,17 +16,17 @@ public class HelloService {
     public static final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
     //@CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/hello")
+    //@GetMapping("/hello")
+    @RequestMapping(method = RequestMethod.GET)
     public Iterable<Hello> findAllHellos() {
         return respository.findAll();
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
+    //@RequestMapping(method = RequestMethod.POST)
     //@CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/addHellos")
+    @RequestMapping(method = RequestMethod.POST)
     public String createHello() {
-
 
         return "Hello from POST";
 
