@@ -7,15 +7,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping(path = "/api/hello")
 public class HelloService {
     @Autowired
     HelloRespository respository;
 
+
     public static final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     //@GetMapping("/hello")
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Hello> findAllHellos() {
@@ -24,7 +26,7 @@ public class HelloService {
 
 
     //@RequestMapping(method = RequestMethod.POST)
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(method = RequestMethod.POST)
     public String createHello() {
 
