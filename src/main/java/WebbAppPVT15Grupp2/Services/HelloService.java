@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path = "/api/hello")
+@RequestMapping(path = "/api")
 public class HelloService {
     @Autowired
     HelloRespository respository;
@@ -18,15 +18,15 @@ public class HelloService {
     public static final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/hello")
     public Iterable<Hello> findAllHellos() {
         return respository.findAll();
     }
 
 
     //@RequestMapping(method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:4")
+    @PostMapping("/addhello")
     public String createHello() {
 
         return "Hello from POST";
