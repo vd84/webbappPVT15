@@ -15,7 +15,7 @@ public class UserController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @CrossOrigin(origins = "anonymous")
+    //@CrossOrigin(origins = "anonymous")
     @RequestMapping("/user")
     public User user(@RequestParam(value = "name", defaultValue = "Peter") String name){
         return new User(counter.incrementAndGet(), String.format(template, name));
