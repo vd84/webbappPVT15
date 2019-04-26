@@ -13,7 +13,7 @@ public class PUserService {
     @Autowired
     PuserRepository repository;
 
-    @GetMapping("/user")
+    @GetMapping("/puser")
     public Iterable<PUser> findAllUsers(){
         return repository.findAll();
     }
