@@ -19,17 +19,6 @@ public class User {
     private String currentYouthCentre;
     private String role;
 
-    public User(String userName, String passWord, boolean active, int points, int fairPlayPoints, String facebookLogin, String facebookPassword, String currentYouthCenter, String role) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.active = active;
-        this.points = points;
-        this.fairPlayPoints = fairPlayPoints;
-        this.facebookLogin = facebookLogin;
-        this.facebookPassword = facebookPassword;
-        this.currentYouthCentre = currentYouthCenter;
-        this.role = role;
-    }
 
     public long getId() {
         return id;
