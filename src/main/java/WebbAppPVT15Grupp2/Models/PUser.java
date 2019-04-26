@@ -1,6 +1,6 @@
 package WebbAppPVT15Grupp2.Models;
 
-import lombok.Data;
+/*import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,4 +24,4 @@ public class PUser implements Serializable {
     private int currentYouthCentre;
     @Column(name = "role")
     private int role;
-}
+}*/
