@@ -11,7 +11,7 @@
 	<groupId>com.pvtgrupp2</groupId>
 	<artifactId>webbappPVT15</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<username>webbappPVT15</username>
+	<userName>webbappPVT15</userName>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

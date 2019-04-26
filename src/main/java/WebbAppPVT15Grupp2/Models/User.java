@@ -12,7 +12,7 @@ public class User {
     @Column(name="id")
     private long id;
     @Column(name="userName")
-    private String username;
+    private String userName;
     @Column(name="password")
     private String passWord;
     @Column(name="active")
@@ -30,8 +30,8 @@ public class User {
     @Column(name="role")
     private String role;
 
-    public User(String username, String passWord, boolean active, int points, int fairPlayPoints, String facebookLogin, String facebookPassword, String currentYouthCenter, String role) {
-        this.username = username;
+    public User(String userName, String passWord, boolean active, int points, int fairPlayPoints, String facebookLogin, String facebookPassword, String currentYouthCenter, String role) {
+        this.userName = userName;
         this.passWord = passWord;
         this.active = active;
         this.points = points;
@@ -50,12 +50,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassWord() {
