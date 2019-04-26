@@ -1,18 +1,16 @@
 package WebbAppPVT15Grupp2.Models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table()
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String userName;
+    private String username;
     private String passWord;
     private boolean active;
     private int points;
@@ -22,8 +20,8 @@ public class User {
     private String currentYouthCenter;
     private String role;
 
-    public User(String userName, String passWord, boolean active, int points, int fairPlayPoints, String facebookLogin, String facebookPassword, String currentYouthCenter, String role) {
-        this.userName = userName;
+    public User(String username, String passWord, boolean active, int points, int fairPlayPoints, String facebookLogin, String facebookPassword, String currentYouthCenter, String role) {
+        this.username = username;
         this.passWord = passWord;
         this.active = active;
         this.points = points;
@@ -42,12 +40,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassWord() {
