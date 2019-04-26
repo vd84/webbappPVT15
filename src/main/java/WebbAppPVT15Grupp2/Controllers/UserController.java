@@ -17,6 +17,6 @@ public class UserController {
 
     @RequestMapping("/user")
     public User user(@RequestParam(value = "name", defaultValue = "Peter") String name){
-        return new User(counter.incrementAndGet(), String.format(template, name));
+        return null; // new User(counter.incrementAndGet(), String.format(template, name));
     }
 }
