@@ -23,7 +23,7 @@ public class HelloService {
         return respository.findAll();
     }
 
-    @RequestMapping(value = "/hello{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> findHelloById(@PathVariable("id") int id){
         logger.info("Fetching user by id {}", id);
         Hello hello = respository.findById(id).get();
