@@ -9,14 +9,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String userName;
-    private String passWord;
+    private String username;
+    private String password;
     private boolean active;
     private int points;
-    private int fairPlayPoints;
-    private String facebookLogin;
-    private String facebookPassword;
-    private int currentYouthCentre;
+    private int fairplay_points;
+    private String facebook_login;
+    private String facebook_password;
+    private int current_youthcentre;
     private int role;
 
 
@@ -28,20 +28,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean isActive() {
@@ -60,36 +60,36 @@ public class User {
         this.points = points;
     }
 
-    public int getFairPlayPoints() {
-        return fairPlayPoints;
+    public int getFairplay_points() {
+        return fairplay_points;
     }
 
-    public void setFairPlayPoints(int fairPlayPoints) {
-        this.fairPlayPoints = fairPlayPoints;
+    public void setFairplay_points(int fairplay_points) {
+        this.fairplay_points = fairplay_points;
     }
 
-    public String getFacebookLogin() {
-        return facebookLogin;
+    public String getFacebook_login() {
+        return facebook_login;
     }
 
-    public void setFacebookLogin(String facebookLogin) {
-        this.facebookLogin = facebookLogin;
+    public void setFacebook_login(String facebook_login) {
+        this.facebook_login = facebook_login;
     }
 
-    public String getFacebookPassword() {
-        return facebookPassword;
+    public String getFacebook_password() {
+        return facebook_password;
     }
 
-    public void setFacebookPassword(String facebookPassword) {
-        this.facebookPassword = facebookPassword;
+    public void setFacebook_password(String facebook_password) {
+        this.facebook_password = facebook_password;
     }
 
     public int getCurrentYouthCenter() {
-        return currentYouthCentre;
+        return current_youthcentre;
     }
 
     public void setCurrentYouthCenter(int currentYouthCenter) {
-        this.currentYouthCentre = currentYouthCenter;
+        this.current_youthcentre = currentYouthCenter;
     }
 
     public int getRole() {
