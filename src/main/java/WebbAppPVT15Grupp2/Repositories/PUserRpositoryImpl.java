@@ -1,6 +1,7 @@
+/*
 package WebbAppPVT15Grupp2.Repositories;
 
-/*import WebbAppPVT15Grupp2.Models.PUser;
+import WebbAppPVT15Grupp2.Models.PUser;
 //import org.springframework.jdbc.object.StoredProcedure;
 
 import javax.persistence.EntityManager;
@@ -17,4 +18,5 @@ public class PUserRpositoryImpl implements PUserRepositoryCustom {
         StoredProcedureQuery findByYearPUser = em.createNamedStoredProcedureQuery("getAllUsers");
         return findByYearPUser.getResultList();
     }
-}*/
+}
+*/

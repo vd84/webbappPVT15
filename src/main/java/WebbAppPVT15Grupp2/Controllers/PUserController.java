@@ -1,5 +1,6 @@
-package WebbAppPVT15Grupp2.Controllers;
 /*
+package WebbAppPVT15Grupp2.Controllers;
+
 import WebbAppPVT15Grupp2.Models.PUser;
 import WebbAppPVT15Grupp2.Repositories.PuserRepository;
 //import org.kds.spring.jpa.domain.Employees;
@@ -21,7 +22,7 @@ public class PUserController {
     @Autowired
     private PuserRepository puserRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/puser", method = RequestMethod.GET)
     public ResponseEntity<List<PUser>> getAllUsers() {
 
         Iterable<PUser> employees = puserRepository.getAllUsers();
@@ -31,13 +32,15 @@ public class PUserController {
         return new ResponseEntity<>(target, HttpStatus.OK);
 
     }
-*/
 
 
-    /*@RequestMapping(value = "/puser", method = RequestMethod.GET)
+
+    */
+/*@RequestMapping(value = "/puser", method = RequestMethod.GET)
     public ResponseEntity<PUser> getAllEmployeeById(@PathVariable(name = "id") long id) {
 
         PUser one = puserRepository.findOne(id);
         return new ResponseEntity<PUser>(one, HttpStatus.OK);
-    }*/
-//}
+    }*//*
+
+}*/

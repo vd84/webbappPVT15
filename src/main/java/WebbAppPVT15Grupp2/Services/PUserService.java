@@ -15,7 +15,7 @@ public class PUserService {
     PuserRepository repository;
 
     @GetMapping("/puser")
-    public Iterable<PUser> findAllUsers(){
+    public Iterable<PUser> getAllUsers(){
         return repository.findAll();
     }
 
