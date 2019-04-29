@@ -1,6 +1,7 @@
+/*
 package WebbAppPVT15Grupp2.Models;
 
-/*import lombok.Data;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;

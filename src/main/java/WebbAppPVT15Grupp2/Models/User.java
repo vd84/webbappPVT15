@@ -1,3 +1,4 @@
+/*
 package WebbAppPVT15Grupp2.Models;
 
 
@@ -9,14 +10,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String userName;
-    private String passWord;
+    private String username;
+    private String password;
     private boolean active;
     private int points;
-    private int fairPlayPoints;
-    private String facebookLogin;
-    private String facebookPassword;
-    private String currentYouthCentre;
+    private int fairplay_points;
+    private String facebook_login;
+    private String facebook_password;
+    private String current_youthcentre;
     private String role;
 
 
@@ -29,19 +30,19 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = username;
     }
 
     public String getPassWord() {
-        return passWord;
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassWord(String password) {
+        this.password = password;
     }
 
     public boolean isActive() {
@@ -61,35 +62,35 @@ public class User {
     }
 
     public int getFairPlayPoints() {
-        return fairPlayPoints;
+        return fairplay_points;
     }
 
     public void setFairPlayPoints(int fairPlayPoints) {
-        this.fairPlayPoints = fairPlayPoints;
+        this.fairplay_points = fairPlayPoints;
     }
 
     public String getFacebookLogin() {
-        return facebookLogin;
+        return facebook_login;
     }
 
     public void setFacebookLogin(String facebookLogin) {
-        this.facebookLogin = facebookLogin;
+        this.facebook_login = facebookLogin;
     }
 
     public String getFacebookPassword() {
-        return facebookPassword;
+        return facebook_password;
     }
 
     public void setFacebookPassword(String facebookPassword) {
-        this.facebookPassword = facebookPassword;
+        this.facebook_password = facebookPassword;
     }
 
     public String getCurrentYouthCenter() {
-        return currentYouthCentre;
+        return current_youthcentre;
     }
 
     public void setCurrentYouthCenter(String currentYouthCenter) {
-        this.currentYouthCentre = currentYouthCenter;
+        this.current_youthcentre = currentYouthCenter;
     }
 
     public String getRole() {
@@ -100,3 +101,4 @@ public class User {
         this.role = role;
     }
 }
+*/
