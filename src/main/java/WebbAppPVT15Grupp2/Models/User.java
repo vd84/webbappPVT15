@@ -16,8 +16,8 @@ public class User {
     private int fairPlayPoints;
     private String facebookLogin;
     private String facebookPassword;
-    private String currentYouthCentre;
-    private String role;
+    private int currentYouthCentre;
+    private int role;
 
 
     public long getId() {
@@ -84,19 +84,19 @@ public class User {
         this.facebookPassword = facebookPassword;
     }
 
-    public String getCurrentYouthCenter() {
+    public int getCurrentYouthCenter() {
         return currentYouthCentre;
     }
 
-    public void setCurrentYouthCenter(String currentYouthCenter) {
+    public void setCurrentYouthCenter(int currentYouthCenter) {
         this.currentYouthCentre = currentYouthCenter;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 }
