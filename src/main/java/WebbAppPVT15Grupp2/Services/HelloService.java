@@ -6,9 +6,11 @@ import WebbAppPVT15Grupp2.Repositories.HelloRespository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping(path="/api")
@@ -38,9 +40,20 @@ public class HelloService {
 
 
 
-    @PostMapping("/hello")
-    public Hello submitAHello(@RequestBody Hello hello){
-        return respository.save(hello);
+    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    public ResponseEntity<?> submitAHello(@RequestBody Hello hello, UriComponentsBuilder ucBuilder){
+        logger.info("Creating User : {}", hello);
+
+        if (false) {
+            logger.error("Unable to create. A User with name {} already exist", hello.getMessage());
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+        respository.save(hello);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/hello/{id}").buildAndExpand(hello.getId()).toUri());
+        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+
     }
 
 }
