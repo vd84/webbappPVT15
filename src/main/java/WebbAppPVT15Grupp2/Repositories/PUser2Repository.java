@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface PUser2Repository extends CrudRepository<PUser2, Integer>{
     @Procedure
-    void sproc_add_user(String name, int youthcentre);
+    void sproc_add_user(String name, String password, int youthcentre);
 
     @Procedure
     List<ReturnUser> sproc_get_all_users();

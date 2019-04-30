@@ -28,7 +28,7 @@ public class addUserService {
             logger.error("Unable to create. A User with name {} already exist", pUser2.getUsername());
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        repo.sproc_add_user(pUser2.getUsername(),pUser2.getCurrent_youthcentre());
+        repo.sproc_add_user(pUser2.getUsername(), pUser2.getPassword(),pUser2.getCurrent_youthcentre());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(pUser2.getId()).toUri());
