@@ -8,7 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String username;
     private String password;
     private boolean active;
@@ -16,31 +16,31 @@ public class User {
     private int fairplay_points;
     private String facebook_login;
     private String facebook_password;
-    private String current_youthcentre;
-    private String role;
+    private int current_youthcentre;
+    private int role;
 
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassWord() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassWord(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -60,43 +60,43 @@ public class User {
         this.points = points;
     }
 
-    public int getFairPlayPoints() {
+    public int getFairplay_points() {
         return fairplay_points;
     }
 
-    public void setFairPlayPoints(int fairPlayPoints) {
-        this.fairplay_points = fairPlayPoints;
+    public void setFairplay_points(int fairplay_points) {
+        this.fairplay_points = fairplay_points;
     }
 
-    public String getFacebookLogin() {
+    public String getFacebook_login() {
         return facebook_login;
     }
 
-    public void setFacebookLogin(String facebookLogin) {
-        this.facebook_login = facebookLogin;
+    public void setFacebook_login(String facebook_login) {
+        this.facebook_login = facebook_login;
     }
 
-    public String getFacebookPassword() {
+    public String getFacebook_password() {
         return facebook_password;
     }
 
-    public void setFacebookPassword(String facebookPassword) {
-        this.facebook_password = facebookPassword;
+    public void setFacebook_password(String facebook_password) {
+        this.facebook_password = facebook_password;
     }
 
-    public String getCurrentYouthCenter() {
+    public int getCurrentYouthCenter() {
         return current_youthcentre;
     }
 
-    public void setCurrentYouthCenter(String currentYouthCenter) {
+    public void setCurrentYouthCenter(int currentYouthCenter) {
         this.current_youthcentre = currentYouthCenter;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 }

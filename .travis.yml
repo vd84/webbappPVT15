@@ -2,7 +2,6 @@ language: java
 
 jdk:
   - oraclejdk11
-  - openjdk11
 
 notifications:
   slack: pvt-19group2:j0Dn7A4pAMGWpE0LwNaVyYzl
