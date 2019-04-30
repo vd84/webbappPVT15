@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@RestController
 public class addUserService {
     @Autowired
     PUser2Repository repo;
@@ -33,7 +31,7 @@ public class addUserService {
         repo.sproc_add_user(pUser2.getUsername(),pUser2.getCurrent_youthcentre());
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/addUser/{id}").buildAndExpand(pUser2.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(pUser2.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
 
