@@ -23,10 +23,9 @@ public class PUser2Service {
     PUser2Repository repo;
 
     @GetMapping("/getPuser2")
-    public void sproc_get_all_users(){
-        Query query = session.getNamedQuery("callGetAllFoos");
-        List<Foo> allFoos = query.list();
+    public List sproc_get_all_users(){
 
-        //return repo.sproc_get_all_users();
+
+        return repo.sproc_get_all_users();
     }
 }

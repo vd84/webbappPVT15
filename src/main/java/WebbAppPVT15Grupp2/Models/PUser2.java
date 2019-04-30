@@ -17,7 +17,7 @@ public class PUser2 {
     private int fairplay_points;
     private String facebook_login;
     private String facebook_password;
-    private String current_youthcentre;
+    private int current_youthcentre;
     private String role;
 
     public long getId() {
@@ -84,11 +84,11 @@ public class PUser2 {
         this.facebook_password = facebook_password;
     }
 
-    public String getCurrent_youthcentre() {
+    public int getCurrent_youthcentre() {
         return current_youthcentre;
     }
 
-    public void setCurrent_youthcentre(String current_youthcentre) {
+    public void setCurrent_youthcentre(int current_youthcentre) {
         this.current_youthcentre = current_youthcentre;
     }
 

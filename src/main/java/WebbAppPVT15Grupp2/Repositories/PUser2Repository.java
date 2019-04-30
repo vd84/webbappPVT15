@@ -14,7 +14,7 @@ public interface PUser2Repository extends CrudRepository<PUser2, Integer>{
     void sproc_add_user(String name, int youthcentre);
 
     @Procedure
-    Object[] sproc_get_all_users();
+    List<ReturnUser> sproc_get_all_users();
 }
 
 
