@@ -84,12 +84,12 @@ public class PUser2 {
         this.facebook_password = facebook_password;
     }
 
-    public int getCurrent_youthcentre() {
+    public int getCurrentyouthcentre() {
         return currentyouthcentre;
     }
 
-    public void setCurrent_youthcentre(int current_youthcentre) {
-        this.currentyouthcentre = current_youthcentre;
+    public void setCurrentyouthcentre(int currentyouthcentre) {
+        this.currentyouthcentre = currentyouthcentre;
     }
 
     public String getRole() {
