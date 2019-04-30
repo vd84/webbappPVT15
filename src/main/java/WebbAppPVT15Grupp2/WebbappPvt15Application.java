@@ -1,11 +1,10 @@
 package WebbAppPVT15Grupp2;
 
-import WebbAppPVT15Grupp2.Repositories.PUser2Repository;
+import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.context.ApplicationContext;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 public class WebbappPvt15Application {
@@ -15,7 +14,7 @@ public class WebbappPvt15Application {
 
 		ApplicationContext c = SpringApplication.run(WebbappPvt15Application.class,args);
 
-		PUser2Repository repo = c.getBean(PUser2Repository.class);
+		UserRepository repo = c.getBean(UserRepository.class);
 		//repo.sproc_add_user("TestUser2", 1);
 
 	}
