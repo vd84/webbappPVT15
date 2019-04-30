@@ -37,7 +37,7 @@ public class addUserService {
 
 
     }
-    @RequestMapping(value = "/adduser", method = RequestMethod.PUT)
+    /*@RequestMapping(value = "/adduser", method = RequestMethod.PUT)
     public ResponseEntity<?> changeUser(@RequestBody PUser2 pUser2, UriComponentsBuilder ucBuilder){
         logger.info("Creating User : {}", pUser2);
 
@@ -52,5 +52,5 @@ public class addUserService {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
 
-    }
+    }*/
 }
