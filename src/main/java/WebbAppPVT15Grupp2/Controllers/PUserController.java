@@ -1,5 +1,4 @@
-/*
-package WebbAppPVT15Grupp2.Controllers;
+/*package WebbAppPVT15Grupp2.Controllers;
 
 import WebbAppPVT15Grupp2.Models.PUser;
 import WebbAppPVT15Grupp2.Repositories.PuserRepository;
@@ -31,16 +30,17 @@ public class PUserController {
         employees.forEach(target::add);
         return new ResponseEntity<>(target, HttpStatus.OK);
 
-    }
+    }*/
 
 
 
-    */
-/*@RequestMapping(value = "/puser", method = RequestMethod.GET)
+/*
+@RequestMapping(value = "/puser", method = RequestMethod.GET)
     public ResponseEntity<PUser> getAllEmployeeById(@PathVariable(name = "id") long id) {
 
         PUser one = puserRepository.findOne(id);
         return new ResponseEntity<PUser>(one, HttpStatus.OK);
-    }*//*
+    }
+*/
 
-}*/
+//}

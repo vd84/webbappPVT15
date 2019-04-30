@@ -4,7 +4,8 @@ package WebbAppPVT15Grupp2.Models;
 import javax.persistence.*;
 
 @Entity
-public class User {
+@Table(name = "user")
+public class PUser2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,6 @@ public class User {
     private String current_youthcentre;
     private String role;
 
-
     public long getId() {
         return id;
     }
@@ -28,19 +28,19 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassWord() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassWord(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -60,36 +60,36 @@ public class User {
         this.points = points;
     }
 
-    public int getFairPlayPoints() {
+    public int getFairplay_points() {
         return fairplay_points;
     }
 
-    public void setFairPlayPoints(int fairPlayPoints) {
-        this.fairplay_points = fairPlayPoints;
+    public void setFairplay_points(int fairplay_points) {
+        this.fairplay_points = fairplay_points;
     }
 
-    public String getFacebookLogin() {
+    public String getFacebook_login() {
         return facebook_login;
     }
 
-    public void setFacebookLogin(String facebookLogin) {
-        this.facebook_login = facebookLogin;
+    public void setFacebook_login(String facebook_login) {
+        this.facebook_login = facebook_login;
     }
 
-    public String getFacebookPassword() {
+    public String getFacebook_password() {
         return facebook_password;
     }
 
-    public void setFacebookPassword(String facebookPassword) {
-        this.facebook_password = facebookPassword;
+    public void setFacebook_password(String facebook_password) {
+        this.facebook_password = facebook_password;
     }
 
-    public String getCurrentYouthCenter() {
+    public String getCurrent_youthcentre() {
         return current_youthcentre;
     }
 
-    public void setCurrentYouthCenter(String currentYouthCenter) {
-        this.current_youthcentre = currentYouthCenter;
+    public void setCurrent_youthcentre(String current_youthcentre) {
+        this.current_youthcentre = current_youthcentre;
     }
 
     public String getRole() {
