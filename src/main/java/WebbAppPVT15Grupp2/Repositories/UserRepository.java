@@ -15,6 +15,20 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Procedure
     List<ReturnUser> sproc_get_all_users();
+
+    /**
+     *
+     * @param id
+     * @param name
+     * @param pass
+     * @param active must be sent as an int 1= true and 0 = false
+     * @param facebooklogin
+     * @param facebookpassword
+     * @param currentyouthcentre
+     * @param role
+     */
+    @Procedure
+    void sproc_update_user(long id, String name, String pass,int  active , String facebooklogin, String facebookpassword,int currentyouthcentre, int role);
 }
 
 

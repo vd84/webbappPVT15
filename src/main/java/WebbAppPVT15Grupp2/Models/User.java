@@ -12,13 +12,13 @@ public class User {
     private long id;
     private String username;
     private String password;
-    private boolean active;
+    private int active;
     private int points;
     private int fairplay_points;
     private String facebook_login;
     private String facebook_password;
     private int currentyouthcentre;
-    private String role;
+    private int role;
 
     public long getId() {
         return id;
@@ -44,11 +44,11 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActive() {
+    public int isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
@@ -92,11 +92,11 @@ public class User {
         this.currentyouthcentre = currentyouthcentre;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 }

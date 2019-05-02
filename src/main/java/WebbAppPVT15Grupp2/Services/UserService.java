@@ -21,19 +21,36 @@ public class UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-    public ResponseEntity<?> submitUser(@RequestBody User pUser2, UriComponentsBuilder ucBuilder) {
-        logger.info("Creating User : {}", pUser2);
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public ResponseEntity<?> submitUser(@RequestBody User addUser, UriComponentsBuilder ucBuilder) {
+        logger.info("Creating User : {}", addUser);
 
         if (false) {
-            logger.error("Unable to create. A User with name {} already exist", pUser2.getUsername());
+            logger.error("Unable to create. A User with name {} already exist", addUser.getUsername());
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        System.out.println(pUser2.getCurrentyouthcentre());
-        repository.sproc_add_user(pUser2.getUsername(), pUser2.getPassword(), pUser2.getCurrentyouthcentre());
+        System.out.println(addUser.getCurrentyouthcentre());
+        repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre());
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(pUser2.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(addUser.getId()).toUri());
+        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+
+
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    public ResponseEntity<?> modifyUser(@RequestBody User modUser, UriComponentsBuilder ucBuilder) {
+        logger.info("Modefying User : {}", modUser);
+
+        if (false) {
+            logger.error("Unable to create. A User with name {} already exist", modUser.getUsername());
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+        repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(),modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(modUser.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
 
