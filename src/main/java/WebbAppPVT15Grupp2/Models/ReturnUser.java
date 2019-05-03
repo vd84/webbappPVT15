@@ -17,8 +17,10 @@ public class ReturnUser implements Serializable {
     private String password;
     @Column(name = "points")
     private int points;
-    @Column(name = "current_youthcentre")
-    private int current_youthcentre;
+    @Column(name = "fairplaypoints")
+    private int fairplaypoints;
+    @Column(name = "currentyouthcentre")
+    private int currentyouthcentre;
     @Column(name = "role")
     private int role;
 
@@ -54,12 +56,20 @@ public class ReturnUser implements Serializable {
         this.points = points;
     }
 
-    public int getCurrent_youthcentre() {
-        return current_youthcentre;
+    public int getFairplaypoints() {
+        return fairplaypoints;
     }
 
-    public void setCurrent_youthcentre(int current_youthcentre) {
-        this.current_youthcentre = current_youthcentre;
+    public void setFairplaypoints(int fairplaypoints) {
+        this.fairplaypoints = fairplaypoints;
+    }
+
+    public int getCurrentyouthcentre() {
+        return currentyouthcentre;
+    }
+
+    public void setCurrentyouthcentre(int currentyouthcentre) {
+        this.currentyouthcentre = currentyouthcentre;
     }
 
     public int getRole() {

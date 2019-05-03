@@ -14,9 +14,9 @@ public class User {
     private String password;
     private int active;
     private int points;
-    private int fairplay_points;
-    private String facebook_login;
-    private String facebook_password;
+    private int fairplaypoints;
+    private String facebooklogin;
+    private String facebookpassword;
     private int currentyouthcentre;
     private int role;
 
@@ -60,28 +60,28 @@ public class User {
         this.points = points;
     }
 
-    public int getFairplay_points() {
-        return fairplay_points;
+    public int getFairplaypoints() {
+        return fairplaypoints;
     }
 
     public void setFairplay_points(int fairplay_points) {
-        this.fairplay_points = fairplay_points;
+        this.fairplaypoints = fairplay_points;
     }
 
     public String getFacebook_login() {
-        return facebook_login;
+        return facebooklogin;
     }
 
     public void setFacebook_login(String facebook_login) {
-        this.facebook_login = facebook_login;
+        this.facebooklogin = facebook_login;
     }
 
     public String getFacebook_password() {
-        return facebook_password;
+        return facebookpassword;
     }
 
     public void setFacebook_password(String facebook_password) {
-        this.facebook_password = facebook_password;
+        this.facebookpassword = facebook_password;
     }
 
     public int getCurrentyouthcentre() {
