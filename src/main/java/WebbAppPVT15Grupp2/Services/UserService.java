@@ -66,9 +66,9 @@ public class UserService {
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
+    public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
         logger.info("Fetching user by id {}", id);
-        User user = repository.findById(id).get();
+        User user = repository.findById((int) id).get();
 
         if (user == null) {
             logger.error("User with id {} not found.", id);
@@ -78,6 +78,11 @@ public class UserService {
 
 
     }
+
+
+
+
+
 
     @GetMapping("/getPuser2")
     public List sproc_get_all_users() {
