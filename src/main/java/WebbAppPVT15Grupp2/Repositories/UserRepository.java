@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
     @Procedure
-    void sproc_add_user(String name, String password, int youthcentre);
+    String sproc_add_user(String name, String password, int youthcentre);
 
     @Procedure
     List<ReturnUser> sproc_get_all_users();

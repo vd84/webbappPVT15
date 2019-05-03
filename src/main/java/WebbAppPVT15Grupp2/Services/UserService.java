@@ -1,5 +1,6 @@
 package WebbAppPVT15Grupp2.Services;
 
+import WebbAppPVT15Grupp2.Models.ReturnUser;
 import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.slf4j.Logger;
@@ -29,11 +30,14 @@ public class UserService {
             logger.error("Unable to create. A User with name {} already exist", addUser.getUsername());
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        System.out.println(addUser.getCurrentyouthcentre());
-        repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre());
 
+        String addedUserID = (repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre()));
+
+        System.out.println(addedUserID);
+        System.out.println(addUser.getId());
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(addUser.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/User/{id}").buildAndExpand(addUser.getId()).toUri());
+        System.out.println(headers.getLocation());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
 
