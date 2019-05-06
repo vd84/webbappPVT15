@@ -1,7 +1,12 @@
 package WebbAppPVT15Grupp2.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+
+
 
 
 @Entity
@@ -11,20 +16,22 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDateTime registrationDate;
-    private LocalDateTime createdBy;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+   // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private Timestamp registrationdate;
+    private int createdby;
+   // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private Timestamp startdate;
+   // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private Timestamp enddate;
     private String name;
     private String description;
-    private int responsibleUser;
+    private int responsibleuser;
 
-    private String alternativeLocation;
-    private boolean isSuggestion;
-    private boolean isActive;
+    private String alternativelocation;
+    private boolean issuggestion;
+    private boolean isactive;
     private int category;
     private int resource;
-
 
     public int getId() {
         return id;
@@ -34,36 +41,36 @@ public class Activity {
         this.id = id;
     }
 
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
+    public Timestamp getRegistrationdate() {
+        return registrationdate;
     }
 
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setRegistrationdate(Timestamp registrationdate) {
+        this.registrationdate = registrationdate;
     }
 
-    public LocalDateTime getCreatedBy() {
-        return createdBy;
+    public int getCreatedby() {
+        return createdby;
     }
 
-    public void setCreatedBy(LocalDateTime createdBy) {
-        this.createdBy = createdBy;
+    public void setCreatedby(int createdby) {
+        this.createdby = createdby;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public Timestamp getStartdate() {
+        return startdate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setStartdate(Timestamp startdate) {
+        this.startdate = startdate;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public Timestamp getEnddate() {
+        return enddate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setEnddate(Timestamp enddate) {
+        this.enddate = enddate;
     }
 
     public String getName() {
@@ -82,37 +89,36 @@ public class Activity {
         this.description = description;
     }
 
-    public int getResponsibleUser() {
-        return responsibleUser;
+    public int getResponsibleuser() {
+        return responsibleuser;
     }
 
-    public void setResponsibleUser(int responsibleUser) {
-        this.responsibleUser = responsibleUser;
+    public void setResponsibleuser(int responsibleuser) {
+        this.responsibleuser = responsibleuser;
     }
 
-
-    public String getAlternativeLocation() {
-        return alternativeLocation;
+    public String getAlternativelocation() {
+        return alternativelocation;
     }
 
-    public void setAlternativeLocation(String alternativeLocation) {
-        this.alternativeLocation = alternativeLocation;
+    public void setAlternativelocation(String alternativelocation) {
+        this.alternativelocation = alternativelocation;
     }
 
-    public boolean isSuggestion() {
-        return isSuggestion;
+    public boolean isIssuggestion() {
+        return issuggestion;
     }
 
-    public void setSuggestion(boolean suggestion) {
-        isSuggestion = suggestion;
+    public void setIssuggestion(boolean issuggestion) {
+        this.issuggestion = issuggestion;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isIsactive() {
+        return isactive;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setIsactive(boolean isactive) {
+        this.isactive = isactive;
     }
 
     public int getCategory() {
