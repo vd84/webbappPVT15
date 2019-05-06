@@ -1,12 +1,10 @@
 package WebbAppPVT15Grupp2.Models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
+//import java.io.Serializable;
 
-public class ReturnUser implements Serializable {
+@Entity
+public class ReturnUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
