@@ -18,7 +18,7 @@ public class UserBadgeService {
 
     @RequestMapping(value = "/userbadge", method = RequestMethod.POST)
     public ResponseEntity<?> submitUserBadge(@RequestBody UserBadge addUserBadge, UriComponentsBuilder ucBuilder) {
-        repository.sproc_add_user_badge(addUserBadge.getUser(), addUserBadge.getBadge(), addUserBadge.getDescription());
+        repository.sproc_add_user_badge(addUserBadge.getUser(), addUserBadge.getBadge());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

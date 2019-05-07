@@ -11,7 +11,6 @@ public class UserBadge {
     private int id;
     private int user;
     private int badge;
-    private String description;
 
     public int getId() {
         return id;
@@ -35,13 +34,5 @@ public class UserBadge {
 
     public void setBadge(int badge) {
         this.badge = badge;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
