@@ -3,7 +3,6 @@ package WebbAppPVT15Grupp2.Models;
 import lombok.Data;
 
 import javax.persistence.*;
-//import java.io.Serializable;
 
 
 @Entity
@@ -11,7 +10,11 @@ import javax.persistence.*;
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "sproc_get_all_users",
                 procedureName = "sproc_get_all_users",
-                resultClasses = ReturnUser.class)
+                resultClasses = ReturnUser.class),
+
+        /*@NamedStoredProcedureQuery(name = "sproc_get_one_user",
+                procedureName = "sproc_get_one_user",
+                resultClasses = ReturnUser.class)*/
 })
 public class ReturnUser {
     @Id

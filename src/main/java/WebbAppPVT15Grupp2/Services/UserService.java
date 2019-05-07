@@ -36,6 +36,36 @@ public class UserService {
 
     }
 
+/*    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<ReturnUser>> getOneUser(@PathVariable("id") int id) {
+
+
+
+        Iterable<ReturnUser> users = repository.getOneUser(id);
+
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+    }*/
+
+    /*
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
+        logger.info("Fetching user by id {}", id);
+
+        if (!repository.existsById(id)) {
+            logger.error("User with id {} not found.", id);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        User user = repository.findById(id).get();
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+
+
+    }*/
+
+
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<?> submitUser(@RequestBody User addUser, UriComponentsBuilder ucBuilder) {
@@ -70,27 +100,8 @@ public class UserService {
 
     }
 
-/*
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
-        logger.info("Fetching user by id {}", id);
-
-        if (!repository.existsById(id)) {
-            logger.error("User with id {} not found.", id);
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        User user = repository.findById(id).get();
-
-        return new ResponseEntity<User>(user, HttpStatus.OK);
 
 
-    }*/
 
 
-    @GetMapping("/getPuser2")
-    public List sproc_get_all_users() {
-
-
-        return repository.sproc_get_all_users();
-    }
 }
