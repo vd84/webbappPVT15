@@ -34,12 +34,8 @@ public class UserService {
 
         String addedUserID = (repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre()));
 
-        System.out.println(addedUserID);
-        System.out.println(addUser.getId());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(addUser.getId()).toUri());
-        System.out.println(headers.getLocation());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+
+        return new ResponseEntity<User>(addUser, HttpStatus.CREATED);
 
 
     }
