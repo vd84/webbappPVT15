@@ -1,10 +1,11 @@
 package WebbAppPVT15Grupp2.Models;
 
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "user")
+
 public class User {
 
     @Id

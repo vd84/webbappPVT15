@@ -2,6 +2,7 @@ package WebbAppPVT15Grupp2.Services;
 
 //import WebbAppPVT15Grupp2.Models.ReturnUser;
 
+import WebbAppPVT15Grupp2.Models.ReturnUser;
 import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,12 +25,23 @@ public class UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ResponseEntity<List<ReturnUser>> getAllUsers() {
+
+        Iterable<ReturnUser> users = repository.getAllUsers();
+
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+    }
+
+
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<?> submitUser(@RequestBody User addUser, UriComponentsBuilder ucBuilder) {
         logger.info("Creating User : {}", addUser);
 
-        if (false) {
-            logger.error("Unable to create. A User with name {} already exist", addUser.getUsername());
+        if (repository.existsById((int) addUser.getId())) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
 
@@ -57,11 +70,7 @@ public class UserService {
 
     }
 
-    @GetMapping("/user")
-    public Iterable<User> findAllUsers() {
-        return repository.findAll();
-    }
-
+/*
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
         logger.info("Fetching user by id {}", id);
@@ -75,7 +84,7 @@ public class UserService {
         return new ResponseEntity<User>(user, HttpStatus.OK);
 
 
-    }
+    }*/
 
 
     @GetMapping("/getPuser2")
