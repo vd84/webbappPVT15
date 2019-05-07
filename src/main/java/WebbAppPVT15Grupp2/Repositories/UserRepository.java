@@ -1,7 +1,6 @@
 package WebbAppPVT15Grupp2.Repositories;
 
 
-import WebbAppPVT15Grupp2.CustomRepositories.UserRepositoryCustom;
 import WebbAppPVT15Grupp2.Models.ReturnUser;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;

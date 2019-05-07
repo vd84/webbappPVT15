@@ -1,4 +1,4 @@
-package WebbAppPVT15Grupp2.CustomRepositories;
+package WebbAppPVT15Grupp2.Repositories;
 
 import WebbAppPVT15Grupp2.Models.ReturnUser;
 
@@ -8,7 +8,9 @@ public interface UserRepositoryCustom {
 
     List<ReturnUser> getAllUsers();
 
-/*
-    List<ReturnUser> getOneUser(int id);
-*/
+
+    List<ReturnUser> getOneUser(String id);
+
+    List<ReturnUser> login(String userName, String password);
+
 }

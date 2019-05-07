@@ -11,27 +11,22 @@ import javax.persistence.*;
         @NamedStoredProcedureQuery(name = "sproc_get_all_users",
                 procedureName = "sproc_get_all_users",
                 resultClasses = ReturnUser.class),
-
-        /*@NamedStoredProcedureQuery(name = "sproc_get_one_user",
+        @NamedStoredProcedureQuery(name = "sproc_get_one_user",
                 procedureName = "sproc_get_one_user",
-                resultClasses = ReturnUser.class)*/
+                resultClasses = ReturnUser.class),
+        @NamedStoredProcedureQuery(name = "sproc_login",
+                procedureName = "sproc_login",
+                resultClasses = ReturnUser.class)
 })
 public class ReturnUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "id")
     private int id;
-    //@Column(name = "username")
     private String username;
-    //@Column(name = "points")
     private int points;
-    //@Column(name = "fairplaypoints")
     private int fairplaypoints;
-    //@Column(name = "currentyouthcentre")
     private int currentyouthcentre;
-
     private String youthcentrename;
-    //@Column(name = "role")
     private int role;
 
 

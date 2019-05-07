@@ -1,6 +1,5 @@
-package WebbAppPVT15Grupp2.ImplRepositories;
+package WebbAppPVT15Grupp2.Repositories;
 
-import WebbAppPVT15Grupp2.CustomRepositories.UserRepositoryCustom;
 import WebbAppPVT15Grupp2.Models.ReturnUser;
 
 import javax.persistence.EntityManager;
@@ -24,19 +23,38 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         return storedProc.getResultList();
     }
 
-/*    @Override
-    public List<ReturnUser> getOneUser(int id) {
+    @Override
+    public List<ReturnUser> getOneUser(String id) {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_one_user");
 
-        int firstParam = id;
+        String firstParam = id;
         storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
         storedProc.setParameter(firstParam, firstParam);
 
 
         return storedProc.getResultList();
 
-    }*/
+    }
+
+    @Override
+    public List<ReturnUser> login(String userName, String password) {
+
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_login");
+
+        String firstParam = userName;
+        String secondParam = password;
+        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(secondParam, String.class, ParameterMode.IN);
+
+        storedProc.setParameter(firstParam, firstParam);
+        storedProc.setParameter(secondParam, secondParam);
+
+
+        return storedProc.getResultList();
+
+    }
 
 }

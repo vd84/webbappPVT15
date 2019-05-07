@@ -36,18 +36,29 @@ public class UserService {
 
     }
 
-/*    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<ReturnUser>> getOneUser(@PathVariable("id") int id) {
 
 
-
-        Iterable<ReturnUser> users = repository.getOneUser(id);
+        Iterable<ReturnUser> users = repository.getOneUser(String.valueOf(id));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);
         return new ResponseEntity<>(target, HttpStatus.OK);
 
-    }*/
+    }
+
+    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
+    public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
+
+
+        Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword());
+
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+    }
 
     /*
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
@@ -64,7 +75,6 @@ public class UserService {
 
 
     }*/
-
 
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
@@ -99,9 +109,6 @@ public class UserService {
 
 
     }
-
-
-
 
 
 }
