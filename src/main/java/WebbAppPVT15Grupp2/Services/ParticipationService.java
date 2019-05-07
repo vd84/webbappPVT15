@@ -17,9 +17,14 @@ public class ParticipationService {
     ParticipationRepository repository;
 
     @RequestMapping(value = "/participation", method = RequestMethod.POST)
-    public ResponseEntity<?> submitParticipation(@RequestBody Participation addParticipation, UriComponentsBuilder ucBuilder){
+    public ResponseEntity<?> submitParticipation(@RequestBody Participation addParticipation, UriComponentsBuilder ucBuilder) {
         repository.sproc_add_participation(addParticipation.getActivity(), addParticipation.getUser());
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/participation", method = RequestMethod.GET)
+    public Iterable<Participation> findAllParticipations() {
+        return repository.findAll();
     }
 
 }

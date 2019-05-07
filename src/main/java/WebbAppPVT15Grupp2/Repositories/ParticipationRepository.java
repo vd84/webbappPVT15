@@ -8,6 +8,6 @@ public interface ParticipationRepository extends CrudRepository<Participation, I
 
     @Procedure
     void sproc_add_participation(
-            int currActivity,
-            int participatingUser);
+            int curractivity,
+            int participatinguser);
 }

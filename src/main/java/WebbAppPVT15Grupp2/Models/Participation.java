@@ -12,9 +12,9 @@ public class Participation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy hh:mm:ss")
-    private Timestamp registrationDate;
+    private Timestamp registrationdate;
     private boolean participated;
-    private int extraPoints;
+    private int extrapoints;
     private int user;
     private int activity;
 
@@ -27,11 +27,11 @@ public class Participation {
     }
 
     public Timestamp getRegistrationDate() {
-        return registrationDate;
+        return registrationdate;
     }
 
     public void setRegistrationDate(Timestamp registrationDate) {
-        this.registrationDate = registrationDate;
+        this.registrationdate = registrationDate;
     }
 
     public boolean isParticipated() {
@@ -43,11 +43,11 @@ public class Participation {
     }
 
     public int getExtraPoints() {
-        return extraPoints;
+        return extrapoints;
     }
 
     public void setExtraPoints(int extraPoints) {
-        this.extraPoints = extraPoints;
+        this.extrapoints = extraPoints;
     }
 
     public int getUser() {
