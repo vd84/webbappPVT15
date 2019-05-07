@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Services;
 
 //import WebbAppPVT15Grupp2.Models.ReturnUser;
+
 import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.slf4j.Logger;
@@ -33,12 +34,8 @@ public class UserService {
 
         String addedUserID = (repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre()));
 
-        System.out.println(addedUserID);
-        System.out.println(addUser.getId());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/User/{id}").buildAndExpand(addUser.getId()).toUri());
-        System.out.println(headers.getLocation());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+
+        return new ResponseEntity<User>(addUser, HttpStatus.CREATED);
 
 
     }
@@ -51,7 +48,7 @@ public class UserService {
             logger.error("Unable to create. A User with name {} already exist", modUser.getUsername());
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(),modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
+        repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(), modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(modUser.getId()).toUri());
@@ -66,22 +63,19 @@ public class UserService {
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
+    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
         logger.info("Fetching user by id {}", id);
-        User user = repository.findById((int) id).get();
 
-        if (user == null) {
+        if (!repository.existsById(id)) {
             logger.error("User with id {} not found.", id);
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+        User user = repository.findById(id).get();
+
         return new ResponseEntity<User>(user, HttpStatus.OK);
 
 
     }
-
-
-
-
 
 
     @GetMapping("/getPuser2")
