@@ -5,41 +5,32 @@ import lombok.Data;
 import javax.persistence.*;
 //import java.io.Serializable;
 
+
 @Entity
-@Table(name = "user")
 @Data
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "sproc_add_user",
-                procedureName = "sproc_add_user",
+        @NamedStoredProcedureQuery(name = "sproc_get_all_users",
+                procedureName = "sproc_get_all_users",
                 resultClasses = ReturnUser.class)
 })
 public class ReturnUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    //@Column(name = "id")
     private int id;
-    @Column(name = "username")
+    //@Column(name = "username")
     private String username;
-    @Column(name = "points")
+    //@Column(name = "points")
     private int points;
-    @Column(name = "fairplaypoints")
+    //@Column(name = "fairplaypoints")
     private int fairplaypoints;
-    @Column(name = "currentyouthcentre")
+    //@Column(name = "currentyouthcentre")
     private int currentyouthcentre;
-    @Column(name = "youthcentrename")
-    private String currentyouthcentrename;
+
+    private String youthcentrename;
     //@Column(name = "role")
     private int role;
 
-    public ReturnUser(int id, String userName, int points, int fairPoints, int youthCentre, String youthcentrename, int role) {
-        this.id = id;
-        this.username = userName;
-        this.points = points;
-        this.fairplaypoints = fairPoints;
-        this.currentyouthcentre = youthCentre;
-        this.currentyouthcentrename = youthcentrename;
-        this.role = role;
-    }
 
     public int getId() {
         return id;
@@ -81,12 +72,12 @@ public class ReturnUser {
         this.currentyouthcentre = currentyouthcentre;
     }
 
-    public String getCurrentyouthcentrename() {
-        return currentyouthcentrename;
+    public String getYouthcentrename() {
+        return youthcentrename;
     }
 
-    public void setCurrentyouthcentrename(String currentyouthcentrename) {
-        this.currentyouthcentrename = currentyouthcentrename;
+    public void setYouthcentrename(String youthcentrename) {
+        this.youthcentrename = youthcentrename;
     }
 
     public int getRole() {
