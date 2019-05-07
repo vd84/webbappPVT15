@@ -87,10 +87,5 @@ public class UserService {
     }*/
 
 
-    @GetMapping("/getPuser2")
-    public List sproc_get_all_users() {
 
-
-        return repository.sproc_get_all_users();
-    }
 }
