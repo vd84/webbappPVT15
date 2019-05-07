@@ -3,6 +3,9 @@ package WebbAppPVT15Grupp2.Services;
 import WebbAppPVT15Grupp2.Models.ReturnUser;
 import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Repositories.LegacyDataAccessRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -10,18 +13,36 @@ import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @RestController
 @CrossOrigin("*")
-public class LegacyDataAccessRepositoryImpl implements LegacyDataAccessRepository {
+public class LegacyDataAccessService implements LegacyDataAccessRepository {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private LegacyDataAccessRepository repository;
 
-    @GetMapping("/legacy2")
+
+
+    @RequestMapping(value = "/legacy2", method = RequestMethod.GET)
+    public ResponseEntity<List<ReturnUser>> addUser(){
+        Iterable<ReturnUser> returnUser = repository.getSomeLegacyData();
+
+        List<ReturnUser> target = new ArrayList<>();
+        returnUser.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+
+    }
+
+
+     /*@PersistenceContext
+    private EntityManager entityManager;*/
+
+    /*@RequestMapping(value = "/legacy2", method = RequestMethod.GET)
     @Override
     public List<ReturnUser> getSomeLegacyData(){
     //public List<ReturnUser> getSomeLegacyData(String firstParameter){
@@ -46,6 +67,6 @@ public class LegacyDataAccessRepositoryImpl implements LegacyDataAccessRepositor
                 (int) result[6]
         )).collect(Collectors.toList());
 
-    }
+    }*/
 
 }

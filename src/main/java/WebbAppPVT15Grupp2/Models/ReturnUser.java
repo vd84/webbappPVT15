@@ -1,22 +1,32 @@
 package WebbAppPVT15Grupp2.Models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 //import java.io.Serializable;
 
 @Entity
+@Table(name = "user")
+@Data
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "sproc_add_user",
+                procedureName = "sproc_add_user",
+                resultClasses = ReturnUser.class)
+})
 public class ReturnUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "id")
+    @Column(name = "id")
     private int id;
-    //@Column(name = "username")
+    @Column(name = "username")
     private String username;
-    //@Column(name = "points")
+    @Column(name = "points")
     private int points;
-    //@Column(name = "fairplaypoints")
+    @Column(name = "fairplaypoints")
     private int fairplaypoints;
-    //@Column(name = "currentyouthcentre")
+    @Column(name = "currentyouthcentre")
     private int currentyouthcentre;
+    @Column(name = "youthcentrename")
     private String currentyouthcentrename;
     //@Column(name = "role")
     private int role;
