@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Services;
 
 //import WebbAppPVT15Grupp2.Models.ReturnUser;
+
 import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.slf4j.Logger;
@@ -68,17 +69,18 @@ public class UserService {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
         logger.info("Fetching user by id {}", id);
-        User user = repository.findById(id).get();
 
-        if (user == null) {
+        if (!repository.existsById(id)) {
             logger.error("User with id {} not found.", id);
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+        User user = repository.findById(id).get();
+
         return new ResponseEntity<User>(user, HttpStatus.OK);
 
 
     }
-    
+
 
     @GetMapping("/getPuser2")
     public List sproc_get_all_users() {
