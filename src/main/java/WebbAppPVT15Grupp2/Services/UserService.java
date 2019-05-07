@@ -36,7 +36,7 @@ public class UserService {
         System.out.println(addedUserID);
         System.out.println(addUser.getId());
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/User/{id}").buildAndExpand(addUser.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(addUser.getId()).toUri());
         System.out.println(headers.getLocation());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
