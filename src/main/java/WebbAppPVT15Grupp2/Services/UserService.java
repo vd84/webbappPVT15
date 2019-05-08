@@ -12,7 +12,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,24 +60,6 @@ public class UserService {
     }
 
 
-
-    /*
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
-        logger.info("Fetching user by id {}", id);
-
-        if (!repository.existsById(id)) {
-            logger.error("User with id {} not found.", id);
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        User user = repository.findById(id).get();
-
-        return new ResponseEntity<User>(user, HttpStatus.OK);
-
-
-    }*/
-
-
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<?> submitUser(@RequestBody User addUser) {
         logger.info("Creating User : {}", addUser);
@@ -88,7 +69,6 @@ public class UserService {
         }
 
 
-
         Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()));
 
         List<ReturnUser> target = new ArrayList<>();
@@ -96,22 +76,19 @@ public class UserService {
         return new ResponseEntity<>(target, HttpStatus.OK);
 
 
-
-
     }
 
+
     @RequestMapping(value = "/user", method = RequestMethod.PUT)
-    public ResponseEntity<?> modifyUser(@RequestBody User modUser, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> modifyUser(@RequestBody User modUser) {
         logger.info("Modefying User : {}", modUser);
 
-        if (false) {
-            logger.error("Unable to create. A User with name {} already exist", modUser.getUsername());
-            return new ResponseEntity(HttpStatus.CONFLICT);
+        if (!repository.existsById( (int) modUser.getId())) {
+            logger.error("Unable to alter user, user doesnt exist";
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(), modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(modUser.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 
 
