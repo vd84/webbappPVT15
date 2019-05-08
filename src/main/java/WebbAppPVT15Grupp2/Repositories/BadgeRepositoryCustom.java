@@ -7,4 +7,7 @@ import java.util.List;
 public interface BadgeRepositoryCustom {
 
     List<Badge> getAllBadges();
+
+    List<Badge> getOneBadge(int id);
+
 }
