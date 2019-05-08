@@ -16,6 +16,12 @@ import javax.persistence.*;
                 resultClasses = ReturnUser.class),
         @NamedStoredProcedureQuery(name = "sproc_login",
                 procedureName = "sproc_login",
+                resultClasses = ReturnUser.class),
+        @NamedStoredProcedureQuery(name = "sproc_add_user",
+                procedureName = "sproc_add_user",
+                resultClasses = ReturnUser.class),
+        @NamedStoredProcedureQuery(name = "sproc_update_user",
+                procedureName = "sproc_update_user",
                 resultClasses = ReturnUser.class)
 })
 public class ReturnUser {

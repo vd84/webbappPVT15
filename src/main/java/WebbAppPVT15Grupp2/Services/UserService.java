@@ -60,6 +60,8 @@ public class UserService {
 
     }
 
+
+
     /*
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
@@ -78,34 +80,46 @@ public class UserService {
 
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<?> submitUser(@RequestBody User addUser, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> submitUser(@RequestBody User addUser) {
         logger.info("Creating User : {}", addUser);
 
         if (repository.existsById((int) addUser.getId())) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
 
-        String addedUserID = (repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre()));
+        Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()));
 
-
-        return new ResponseEntity<User>(addUser, HttpStatus.CREATED);
-
-
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.CREATED);
     }
 
+
+
+
     @RequestMapping(value = "/user", method = RequestMethod.PUT)
-    public ResponseEntity<?> modifyUser(@RequestBody User modUser, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> modifyUser(@RequestBody User modUser) {
         logger.info("Modefying User : {}", modUser);
 
-        if (false) {
-            logger.error("Unable to create. A User with name {} already exist", modUser.getUsername());
+        if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(), modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
+        Iterable<ReturnUser> users = repository.modifyUser(
+                String.valueOf(modUser.getId()),
+                modUser.getUsername(),
+                modUser.getPassword(),
+                String.valueOf(modUser.getActive()),
+                String.valueOf(modUser.getPoints()),
+                String.valueOf(modUser.getFairplaypoints()),
+                modUser.getFacebooklogin(),
+                modUser.getFacebookpassword(),
+                String.valueOf(modUser.getCurrentyouthcentre()),
+                String.valueOf(modUser.getRole()));
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/addUser/{id}").buildAndExpand(modUser.getId()).toUri());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
 
 
     }
