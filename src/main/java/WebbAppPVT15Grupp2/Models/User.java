@@ -21,7 +21,7 @@ public class User {
     private int currentyouthcentre;
     private int role;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -45,7 +45,7 @@ public class User {
         this.password = password;
     }
 
-    public int isActive() {
+    public int getActive() {
         return active;
     }
 
@@ -65,24 +65,24 @@ public class User {
         return fairplaypoints;
     }
 
-    public void setFairplay_points(int fairplay_points) {
-        this.fairplaypoints = fairplay_points;
+    public void setFairplaypoints(int fairplaypoints) {
+        this.fairplaypoints = fairplaypoints;
     }
 
-    public String getFacebook_login() {
+    public String getFacebooklogin() {
         return facebooklogin;
     }
 
-    public void setFacebook_login(String facebook_login) {
-        this.facebooklogin = facebook_login;
+    public void setFacebooklogin(String facebooklogin) {
+        this.facebooklogin = facebooklogin;
     }
 
-    public String getFacebook_password() {
+    public String getFacebookpassword() {
         return facebookpassword;
     }
 
-    public void setFacebook_password(String facebook_password) {
-        this.facebookpassword = facebook_password;
+    public void setFacebookpassword(String facebookpassword) {
+        this.facebookpassword = facebookpassword;
     }
 
     public int getCurrentyouthcentre() {
@@ -99,22 +99,5 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", active=" + active +
-                ", points=" + points +
-                ", fairplaypoints=" + fairplaypoints +
-                ", facebooklogin='" + facebooklogin + '\'' +
-                ", facebookpassword='" + facebookpassword + '\'' +
-                ", currentyouthcentre=" + currentyouthcentre +
-                ", role=" + role +
-                '}';
     }
 }

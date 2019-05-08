@@ -8,7 +8,6 @@ import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +59,24 @@ public class UserService {
     }
 
 
+
+    /*
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
+        logger.info("Fetching user by id {}", id);
+
+        if (!repository.existsById(id)) {
+            logger.error("User with id {} not found.", id);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        User user = repository.findById(id).get();
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+
+
+    }*/
+
+
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<?> submitUser(@RequestBody User addUser) {
         logger.info("Creating User : {}", addUser);
@@ -68,28 +85,29 @@ public class UserService {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
 
-
         Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);
-        return new ResponseEntity<>(target, HttpStatus.OK);
-
-
+        return new ResponseEntity<>(target, HttpStatus.CREATED);
     }
+
+
 
 
     @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public ResponseEntity<?> modifyUser(@RequestBody User modUser) {
         logger.info("Modefying User : {}", modUser);
 
-        if (!repository.existsById( (int) modUser.getId())) {
-            logger.error("Unable to alter user, user doesnt exist";
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
+            return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        repository.sproc_update_user(modUser.getId(), modUser.getUsername(), modUser.getPassword(), modUser.isActive(), modUser.getFacebook_login(), modUser.getFacebook_password(), modUser.getCurrentyouthcentre(), modUser.getRole());
+        Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()));
 
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
 
 
     }
