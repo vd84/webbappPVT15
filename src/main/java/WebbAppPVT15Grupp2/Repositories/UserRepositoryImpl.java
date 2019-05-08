@@ -73,4 +73,38 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         return storedProc.getResultList();
     }
+
+    @Override
+    public List<ReturnUser> modifyUser(String id, String userName, String password, String active, String points, String fairplaypoints, String facebooklogin, String facebookpassword, String currentYouthCentre, String role) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_update_user");
+
+
+        storedProc.registerStoredProcedureParameter(id, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(userName, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(password, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(active, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(points, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(fairplaypoints, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(facebooklogin, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(facebookpassword, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(currentYouthCentre, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(role, String.class, ParameterMode.IN);
+
+
+
+        storedProc.setParameter(id, id);
+        storedProc.setParameter(userName, userName);
+        storedProc.setParameter(password, password);
+        storedProc.setParameter(active, active);
+        storedProc.setParameter(points, points);
+        storedProc.setParameter(fairplaypoints, fairplaypoints);
+        storedProc.setParameter(facebooklogin, facebooklogin);
+        storedProc.setParameter(facebookpassword, facebookpassword);
+        storedProc.setParameter(currentYouthCentre, currentYouthCentre);
+        storedProc.setParameter(role, role);
+
+
+        return storedProc.getResultList();
+    }
 }

@@ -25,8 +25,8 @@ public interface UserRepository extends CrudRepository<ReturnUser, Integer>, Use
      * @param currentyouthcentre
      * @param role
      */
-    @Procedure
-    void sproc_update_user(long id, String name, String pass,int  active , String facebooklogin, String facebookpassword,int currentyouthcentre, int role);
+    /*@Procedure
+    void sproc_update_user(long id, String name, String pass,int  active , String facebooklogin, String facebookpassword,int currentyouthcentre, int role);*/
 }
 
 
