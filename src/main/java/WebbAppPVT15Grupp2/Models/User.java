@@ -100,4 +100,21 @@ public class User {
     public void setRole(int role) {
         this.role = role;
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", points=" + points +
+                ", fairplaypoints=" + fairplaypoints +
+                ", facebooklogin='" + facebooklogin + '\'' +
+                ", facebookpassword='" + facebookpassword + '\'' +
+                ", currentyouthcentre=" + currentyouthcentre +
+                ", role=" + role +
+                '}';
+    }
 }

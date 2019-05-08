@@ -29,9 +29,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_one_user");
 
-        String firstParam = id;
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.setParameter(firstParam, firstParam);
+        storedProc.registerStoredProcedureParameter(id, String.class, ParameterMode.IN);
+        storedProc.setParameter(id, id);
 
 
         return storedProc.getResultList();
@@ -44,17 +43,34 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_login");
 
-        String firstParam = userName;
-        String secondParam = password;
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(secondParam, String.class, ParameterMode.IN);
 
-        storedProc.setParameter(firstParam, firstParam);
-        storedProc.setParameter(secondParam, secondParam);
+        storedProc.registerStoredProcedureParameter(userName, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(password, String.class, ParameterMode.IN);
+
+        storedProc.setParameter(userName, userName);
+        storedProc.setParameter(password, password);
 
 
         return storedProc.getResultList();
 
     }
 
+    @Override
+    public List<ReturnUser> addUser(String userName, String password, String currentYouthCentre) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_add_user");
+
+
+        storedProc.registerStoredProcedureParameter(userName, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(password, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(password, String.class, ParameterMode.IN);
+
+
+        storedProc.setParameter(userName, userName);
+        storedProc.setParameter(password, password);
+        storedProc.setParameter(password, password);
+
+
+        return storedProc.getResultList();
+    }
 }

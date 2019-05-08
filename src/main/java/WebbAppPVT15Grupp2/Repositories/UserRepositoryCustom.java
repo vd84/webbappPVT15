@@ -13,4 +13,6 @@ public interface UserRepositoryCustom {
 
     List<ReturnUser> login(String userName, String password);
 
+    List<ReturnUser> addUser(String userName, String password, String currentYouthCentre);
+
 }

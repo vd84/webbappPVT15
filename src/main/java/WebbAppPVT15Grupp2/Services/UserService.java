@@ -60,6 +60,8 @@ public class UserService {
 
     }
 
+
+
     /*
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
@@ -78,17 +80,22 @@ public class UserService {
 
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<?> submitUser(@RequestBody User addUser, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> submitUser(@RequestBody User addUser) {
         logger.info("Creating User : {}", addUser);
 
         if (repository.existsById((int) addUser.getId())) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
 
-        String addedUserID = (repository.sproc_add_user(addUser.getUsername(), addUser.getPassword(), addUser.getCurrentyouthcentre()));
 
 
-        return new ResponseEntity<User>(addUser, HttpStatus.CREATED);
+        Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()));
+
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+
 
 
     }
