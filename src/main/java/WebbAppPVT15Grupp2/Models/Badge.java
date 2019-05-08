@@ -15,10 +15,11 @@ import javax.persistence.*;
 public class Badge {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String description;
+    private String image;
 
     public int getId() {
         return id;
@@ -52,5 +53,4 @@ public class Badge {
         this.image = image;
     }
 
-    private String image;
 }
