@@ -43,18 +43,13 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     @Override
     public List<ReturnUser> login(String userName, String password) {
 
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_login");
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_login");
 
-        String firstParam = userName;
-        String secondParam = password;
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
 
-
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-
-        storedProc.setParameter(firstParam, firstParam);
-        storedProc.setParameter(secondParam, secondParam);
+        storedProc.setParameter(1, userName);
+        storedProc.setParameter(2, password);
 
 
         return storedProc.getResultList();
@@ -84,7 +79,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String ) {
+    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_update_user");
 
@@ -114,7 +109,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(4, active);
         storedProc.setParameter(5, points);
         storedProc.setParameter(6, fairplaypoints);
-        storedProc.setParameter(7, );
+        storedProc.setParameter(7, fairplaypoints);
         storedProc.setParameter(8, fairplaypoints);
         storedProc.setParameter(9, fairplaypoints);
         storedProc.setParameter(10, fairplaypoints);
