@@ -11,7 +11,7 @@ import javax.persistence.*;
         @NamedStoredProcedureQuery(name = "sproc_get_all_badges",
                 procedureName = "sproc_get_all_badges",
                 resultClasses = Badge.class),
-        @NamedStoredProcedureQuery(name = "proc_get_users_badges",
+        @NamedStoredProcedureQuery(name = "sproc_get_users_badges",
                 procedureName = "sproc_get_users_badges",
                 resultClasses = Badge.class)
 })
