@@ -29,11 +29,10 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_one_user");
 
-        String firstParam = id;
 
 
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.setParameter(firstParam, firstParam);
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProc.setParameter(1, id);
 
 
         return storedProc.getResultList();
