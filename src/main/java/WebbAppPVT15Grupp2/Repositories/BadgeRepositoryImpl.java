@@ -15,8 +15,7 @@ public class BadgeRepositoryImpl implements BadgeRepositoryCustom {
 
     @Override
     public List<Badge> getAllBadges() {
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_all_badges");
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_badges");
 
         return storedProc.getResultList();
 
@@ -26,9 +25,9 @@ public class BadgeRepositoryImpl implements BadgeRepositoryCustom {
 
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_one_badge");
 
-        storedProc.registerStoredProcedureParameter(id, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
 
-        storedProc.setParameter(id, id);
+        storedProc.setParameter(1, id);
 
         return storedProc.getResultList();
     }
