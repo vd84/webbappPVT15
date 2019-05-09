@@ -32,7 +32,7 @@ public class BadgeService {
     @RequestMapping(value = "/badge/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Badge>> getOneBadge(@PathVariable("id") int id) {
 
-        Iterable<Badge> badges = repository.getOneBadge(id);
+        Iterable<Badge> badges = repository.getUsersBadges(id);
 
         ArrayList<Badge> oneBadge = new ArrayList<>();
         badges.forEach(oneBadge::add);
