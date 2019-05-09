@@ -46,16 +46,16 @@ public class UserService {
 
     }
 
-    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
-
-
         Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword());
-
-        List<ReturnUser> target = new ArrayList<>();
-        users.forEach(target::add);
-        return new ResponseEntity<>(target, HttpStatus.OK);
-
+            List<ReturnUser> target = new ArrayList<>();
+            users.forEach(target::add);
+        if (((List<ReturnUser>) users).size() != 0) {
+            return new ResponseEntity<>(target, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(target, HttpStatus.NO_CONTENT);
+        }
     }
 
 
