@@ -102,7 +102,7 @@ public class UserService {
         if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()));
+        Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()), modUser.getFacebooklogin(), modUser.getFacebookpassword(), String.valueOf(modUser.getCurrentyouthcentre()), String.valueOf(modUser.getRole()));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);

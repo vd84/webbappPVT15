@@ -50,11 +50,11 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         String secondParam = password;
 
 
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
 
-        storedProc.setParameter(firstParam, firstParam);
-        storedProc.setParameter(secondParam, secondParam);
+        storedProc.setParameter(1, firstParam);
+        storedProc.setParameter(2, secondParam);
 
 
         return storedProc.getResultList();
@@ -84,34 +84,47 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints) {
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_update_user");
-
-        String firstParam = id;
-        String secondParam = username;
-        String thirdParam = password;
-        String fourthParam = active;
-        String fifthParam = points;
-        String sixthParam = fairplaypoints;
+    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String facebooklogin, String facebookpassword, String currentyouthcentre, String role) {
 
 
-        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(secondParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(thirdParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(fourthParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(fifthParam, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(sixthParam, String.class, ParameterMode.IN);
+        {
+            StoredProcedureQuery storedProc =
+                    em.createNamedStoredProcedureQuery("sproc_update_user");
 
 
-        storedProc.setParameter(firstParam, firstParam);
-        storedProc.setParameter(secondParam, secondParam);
-        storedProc.setParameter(thirdParam, thirdParam);
-        storedProc.setParameter(fourthParam, fourthParam);
-        storedProc.setParameter(fifthParam, fifthParam);
-        storedProc.setParameter(sixthParam, sixthParam);
+            storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+            storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
 
 
-        return storedProc.getResultList();
+
+
+
+
+            storedProc.setParameter(1, id);
+            storedProc.setParameter(2, username);
+            storedProc.setParameter(3, password);
+            storedProc.setParameter(4, active);
+            storedProc.setParameter(5, points);
+            storedProc.setParameter(6, fairplaypoints);
+            storedProc.setParameter(7, facebooklogin);
+            storedProc.setParameter(8, facebookpassword);
+            storedProc.setParameter(9, currentyouthcentre);
+            storedProc.setParameter(10, role);
+
+
+
+
+
+
+            return storedProc.getResultList();
+        }
     }
 }
