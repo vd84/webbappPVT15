@@ -13,9 +13,12 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     @PersistenceContext
     private EntityManager em;
 
+
     @Override
     public List<ReturnUser> getAllUsers() {
-        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_users");
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_all_users");
+
 
         return storedProc.getResultList();
     }
@@ -23,12 +26,18 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     @Override
     public List<ReturnUser> getOneUser(String id) {
 
-        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_one_user");
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_one_user");
 
-        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProc.setParameter(1, id);
+        String firstParam = id;
+
+
+        storedProc.registerStoredProcedureParameter(firstParam, String.class, ParameterMode.IN);
+        storedProc.setParameter(firstParam, firstParam);
+
 
         return storedProc.getResultList();
+
     }
 
     @Override
@@ -42,34 +51,37 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(1, userName);
         storedProc.setParameter(2, password);
 
+
         return storedProc.getResultList();
+
     }
 
     @Override
     public List<ReturnUser> addUser(String userName, String password, String currentYouthCentre) {
-        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_add_user");
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_add_user");
+
+
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
 
+
         storedProc.setParameter(1, userName);
         storedProc.setParameter(2, password);
         storedProc.setParameter(3, currentYouthCentre);
+
 
         return storedProc.getResultList();
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints) {
-        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_update_user");
+    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String facebookusername, String facebookpassword, String currentyouthcentre, String role) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_update_user");
 
-        /*String firstParam = id;
-        String secondParam = username;
-        String thirdParam = password;
-        String fourthParam = active;
-        String fifthParam = points;
-        String sixthParam = fairplaypoints;*/
+
 
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -90,13 +102,12 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(4, active);
         storedProc.setParameter(5, points);
         storedProc.setParameter(6, fairplaypoints);
-        storedProc.setParameter(7, fairplaypoints);
-        storedProc.setParameter(8, fairplaypoints);
-        storedProc.setParameter(9, fairplaypoints);
-        storedProc.setParameter(10, fairplaypoints);
+        storedProc.setParameter(7, facebookusername);
+        storedProc.setParameter(8, facebookpassword);
+        storedProc.setParameter(9, currentyouthcentre);
+        storedProc.setParameter(10, role);
 
 
         return storedProc.getResultList();
     }
-
 }
