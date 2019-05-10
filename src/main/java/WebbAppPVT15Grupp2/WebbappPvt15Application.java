@@ -21,6 +21,8 @@ public class WebbappPvt15Application {
 
         getExternal();
 
+
+
         ApplicationContext c = SpringApplication.run(WebbappPvt15Application.class, args);
 
         UserRepository repo = c.getBean(UserRepository.class);
