@@ -9,12 +9,12 @@ import java.sql.Timestamp;
 @Table(name = "usercheckin")
 @Data
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "sproc_checkin_user",
-        procedureName = "sproc_checkin_user",
-        resultClasses = Usercheckin.class)
+        @NamedStoredProcedureQuery(name = "sproc_checkin_youthcentre",
+        procedureName = "sproc_checkin_youthcentre",
+        resultClasses = CheckinYouthcentre.class)
 })
 
-public class Usercheckin {
+public class CheckinYouthcentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
