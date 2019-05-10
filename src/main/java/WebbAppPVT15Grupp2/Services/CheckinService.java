@@ -1,6 +1,6 @@
 package WebbAppPVT15Grupp2.Services;
 
-import WebbAppPVT15Grupp2.Models.Relation;
+import WebbAppPVT15Grupp2.Models.Usercheckin;
 import WebbAppPVT15Grupp2.Repositories.CheckinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +18,10 @@ public class CheckinService {
     CheckinRepository repository;
 
     @RequestMapping(value = "/checkin", method = RequestMethod.POST)
-    public ResponseEntity<List<Relation>> checkinUser(@RequestBody Relation relation){
-        Iterable<Relation> rel = repository.addCheckinToUser(String.valueOf(relation.getRelationStartPoint()),String.valueOf(relation.getRelationEndPoint()));
+    public ResponseEntity<List<Usercheckin>> checkinUser(@RequestBody Usercheckin usercheckin){
+        Iterable<Usercheckin> rel = repository.addCheckinToUser(String.valueOf(usercheckin.getUser()),String.valueOf(usercheckin.getYouthcentre()));
 
-        List<Relation> target = new ArrayList<>();
+        List<Usercheckin> target = new ArrayList<>();
         rel.forEach(target::add);
 
 

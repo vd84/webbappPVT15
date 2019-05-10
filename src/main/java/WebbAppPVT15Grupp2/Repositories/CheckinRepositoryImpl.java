@@ -1,6 +1,6 @@
 package WebbAppPVT15Grupp2.Repositories;
 
-import WebbAppPVT15Grupp2.Models.Relation;
+import WebbAppPVT15Grupp2.Models.Usercheckin;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
@@ -14,14 +14,17 @@ public class CheckinRepositoryImpl implements CheckinRepositoryCustom{
     private EntityManager em;
 
     @Override
-    public List<Relation> addCheckinToUser(String relationStartPoint, String relationEndPoint) {
+    public List<Usercheckin> addCheckinToUser(String user, String youthcentre) {
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_checkin_user");
 
         storedProc.registerStoredProcedureParameter(1,String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2,String.class, ParameterMode.IN);
 
-        storedProc.setParameter(1, relationStartPoint);
-        storedProc.setParameter(2, relationEndPoint);
+
+        System.out.println(user);
+        System.out.println(youthcentre);
+        storedProc.setParameter(1, user);
+        storedProc.setParameter(2, youthcentre);
 
         return storedProc.getResultList();
     }
