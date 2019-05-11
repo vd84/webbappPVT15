@@ -10,20 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RestController
 @CrossOrigin("*")
-public class CheckinService {
+public class CheckinYouthcentreService {
     @Autowired
     CheckinYouthcentreRepository repository;
 
-    @RequestMapping(value = "/checkin", method = RequestMethod.POST)
+    @RequestMapping(value = "/checkinyouthcentre", method = RequestMethod.POST)
     public ResponseEntity<List<CheckinYouthcentre>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
-        Iterable<CheckinYouthcentre> rel = repository.addCheckinToUser(String.valueOf(checkinyouthcentre.getUser()),String.valueOf(checkinyouthcentre.getYouthcentre()));
+        Iterable<CheckinYouthcentre> rel = repository.addCheckinYouthcentreToUser(String.valueOf(checkinyouthcentre.getUserid()),String.valueOf(checkinyouthcentre.getYouthcentreid()));
 
         List<CheckinYouthcentre> target = new ArrayList<>();
         rel.forEach(target::add);
-
 
         return new ResponseEntity<>(target, HttpStatus.CREATED);
     }

@@ -6,21 +6,20 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "checkinyouthcentre")
+@Table(name = "checkinactivity")
 @Data
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "sproc_checkin_youthcentre",
-        procedureName = "sproc_checkin_youthcentre",
-        resultClasses = CheckinYouthcentre.class)
+        @NamedStoredProcedureQuery(name = "sproc_checkin_activity",
+        procedureName = "sproc_checkin_activity",
+        resultClasses = CheckinActivity.class)
 })
 
-public class CheckinYouthcentre {
-
+public class CheckinActivity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int userid;
-    private int youthcentreid;
+    private int activityid;
     private Timestamp checkindate;
 
     public int getId() {
@@ -39,12 +38,12 @@ public class CheckinYouthcentre {
         this.userid = userid;
     }
 
-    public int getYouthcentreid() {
-        return youthcentreid;
+    public int getActivityid() {
+        return activityid;
     }
 
-    public void setYouthcentreid(int youthcentreid) {
-        this.youthcentreid = youthcentreid;
+    public void setActivityid(int activityid) {
+        this.activityid = activityid;
     }
 
     public Timestamp getCheckindate() {
