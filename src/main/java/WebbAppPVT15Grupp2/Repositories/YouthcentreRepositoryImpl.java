@@ -1,5 +1,6 @@
 package WebbAppPVT15Grupp2.Repositories;
 
+import WebbAppPVT15Grupp2.Models.ReturnYouthcentre;
 import WebbAppPVT15Grupp2.Models.Youthcentre;
 
 import javax.persistence.EntityManager;
@@ -14,7 +15,7 @@ public class YouthcentreRepositoryImpl implements YouthCentreRepositoryCustom {
 
 
     @Override
-    public List<Youthcentre> getAllYouthcentres() {
+    public List<ReturnYouthcentre> getAllYouthcentres() {
 
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_youthcentres");
         return storedProc.getResultList();

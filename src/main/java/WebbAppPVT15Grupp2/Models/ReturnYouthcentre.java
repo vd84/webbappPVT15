@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-/*@Entity
+@Entity
 @Data
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "sproc_store_youthcentre",
@@ -12,17 +12,19 @@ import javax.persistence.*;
                 resultClasses = ExternalYouthCenter.class),
         @NamedStoredProcedureQuery(name = "sproc_get_all_youthcentres",
                 procedureName = "sproc_get_all_youthcentres",
-                resultClasses = Youthcentre.class)
-})*/
+                resultClasses = ReturnYouthcentre.class)
+})
 
-public class Youthcentre {
-
+public class ReturnYouthcentre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int score;
     private int location;
     private String name;
+    private double lat;
+    private double lon;
+    private int currentactivactivities;
 
     public int getId() {
         return id;
@@ -54,5 +56,29 @@ public class Youthcentre {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public int getCurrentactivactivities() {
+        return currentactivactivities;
+    }
+
+    public void setCurrentactivactivities(int currentactivactivities) {
+        this.currentactivactivities = currentactivactivities;
     }
 }
