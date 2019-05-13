@@ -1,6 +1,6 @@
 package WebbAppPVT15Grupp2;
 
-import WebbAppPVT15Grupp2.Models.YouthCenter;
+import WebbAppPVT15Grupp2.Models.ExternalYouthCenter;
 import WebbAppPVT15Grupp2.Repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +21,8 @@ public class WebbappPvt15Application {
 
         getExternal();
 
+
+
         ApplicationContext c = SpringApplication.run(WebbappPvt15Application.class, args);
 
         UserRepository repo = c.getBean(UserRepository.class);
@@ -40,12 +42,12 @@ public class WebbappPvt15Application {
 
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
-        ResponseEntity<List<YouthCenter>> ycResponse = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<YouthCenter>>() {
+        ResponseEntity<List<ExternalYouthCenter>> ycResponse = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<ExternalYouthCenter>>() {
         });
 
-        List<YouthCenter> list = ycResponse.getBody();
+        List<ExternalYouthCenter> list = ycResponse.getBody();
 
-        for (YouthCenter yc : list) {
+        for (ExternalYouthCenter yc : list) {
             System.out.println(yc);
         }
 
