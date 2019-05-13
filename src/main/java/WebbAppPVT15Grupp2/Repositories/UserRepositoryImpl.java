@@ -51,7 +51,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         storedProc.setParameter(1, userName);
         storedProc.setParameter(2, password);
-        storedProc.setParameter(3, password);
+        storedProc.setParameter(3, isfacebookuser);
 
 
 
@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> addUser(String userName, String displayName, String password, String currentYouthCentre, String isFacebookUser) {
+    public List<ReturnUser> addUser(String userName, String displayname, String password, String currentYouthCentre, String isFacebookUser) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_add_user");
 
@@ -75,10 +75,10 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
 
         storedProc.setParameter(1, userName);
-        storedProc.setParameter(2, displayName);
-        storedProc.setParameter(3, password);
-        storedProc.setParameter(4, currentYouthCentre);
-        storedProc.setParameter(5, isFacebookUser);
+        storedProc.setParameter(2, password);
+        storedProc.setParameter(3, currentYouthCentre);
+        storedProc.setParameter(4, isFacebookUser);
+        storedProc.setParameter(5, displayname);
 
 
 
@@ -87,7 +87,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser) {
+    public List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_update_user");
 
@@ -102,20 +102,23 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+
 
 
 
 
         storedProc.setParameter(1, id);
         storedProc.setParameter(2, username);
-        storedProc.setParameter(3, password);
-        storedProc.setParameter(4, active);
-        storedProc.setParameter(5, points);
-        storedProc.setParameter(6, fairplaypoints);
-        storedProc.setParameter(7, currentyouthcentre);
-        storedProc.setParameter(8, role);
-        storedProc.setParameter(9, isFacebookUser);
+        storedProc.setParameter(3, displayname);
+        storedProc.setParameter(4, password);
+        storedProc.setParameter(5, active);
+        storedProc.setParameter(6, points);
+        storedProc.setParameter(7, fairplaypoints);
+        storedProc.setParameter(8, currentyouthcentre);
+        storedProc.setParameter(9, role);
+        storedProc.setParameter(10, isFacebookUser);
 
 
         return storedProc.getResultList();

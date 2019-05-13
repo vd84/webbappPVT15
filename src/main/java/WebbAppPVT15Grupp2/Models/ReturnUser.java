@@ -29,7 +29,7 @@ public class ReturnUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
-    private String displayName;
+    private String displayname;
     private int points;
     private int fairplaypoints;
     private int currentyouthcentre;
@@ -54,12 +54,12 @@ public class ReturnUser {
         this.username = username;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getDisplayname() {
+        return displayname;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setDisplayname(String displayname) {
+        this.displayname = displayname;
     }
 
     public int getPoints() {
