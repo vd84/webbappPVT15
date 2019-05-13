@@ -29,11 +29,13 @@ public class ReturnUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
+    private String displayName;
     private int points;
     private int fairplaypoints;
     private int currentyouthcentre;
     private String youthcentrename;
     private int role;
+    private int isfacebookuser;
 
 
     public int getId() {
@@ -50,6 +52,14 @@ public class ReturnUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public int getPoints() {
@@ -90,5 +100,13 @@ public class ReturnUser {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public int getIsfacebookuser() {
+        return isfacebookuser;
+    }
+
+    public void setIsfacebookuser(int isfacebookuser) {
+        this.isfacebookuser = isfacebookuser;
     }
 }

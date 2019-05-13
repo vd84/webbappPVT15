@@ -45,7 +45,7 @@ public class UserService {
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
-        Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword());
+        Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword(), String.valueOf(loginUser.isFacebookuser()));
             List<ReturnUser> target = new ArrayList<>();
             users.forEach(target::add);
 
@@ -64,7 +64,7 @@ public class UserService {
             return new ResponseEntity(null, HttpStatus.CONFLICT);
         }
 
-        Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()));
+        Iterable<ReturnUser> users = repository.addUser(addUser.getUsername(), addUser.getDisplayName(), addUser.getPassword(), String.valueOf(addUser.getCurrentyouthcentre()), String.valueOf(addUser.isFacebookuser()));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);
@@ -78,7 +78,7 @@ public class UserService {
         if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-        Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()), modUser.getFacebooklogin(), modUser.getFacebookpassword(), String.valueOf(modUser.getCurrentyouthcentre()), String.valueOf(modUser.getRole()));
+        Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()), String.valueOf(modUser.getCurrentyouthcentre()), String.valueOf(modUser.getRole()), String.valueOf(modUser.isFacebookuser()));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);
