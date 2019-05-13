@@ -10,10 +10,10 @@ public interface UserRepositoryCustom {
 
     List<ReturnUser> getOneUser(String id);
 
-    List<ReturnUser> login(String userName, String password);
+    List<ReturnUser> login(String userName, String password, String isfacebookuser);
 
-    List<ReturnUser> addUser(String userName, String password, String currentYouthCentre);
+    List<ReturnUser> addUser(String userName, String displayName, String password, String currentYouthCentre, String isFacebookUser);
 
-    List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String faceboologin, String facebookpassword, String currentyouthcentre, String role);
+    List<ReturnUser> modifyUser(String id, String username, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser);
 
 }

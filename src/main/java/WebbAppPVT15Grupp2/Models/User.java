@@ -12,12 +12,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
+    private String displayName;
     private String password;
     private int active;
     private int points;
     private int fairplaypoints;
-    private String facebooklogin;
-    private String facebookpassword;
+    private boolean isFacebookuser;
     private int currentyouthcentre;
     private int role;
 
@@ -35,6 +35,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getPassword() {
@@ -69,20 +77,12 @@ public class User {
         this.fairplaypoints = fairplaypoints;
     }
 
-    public String getFacebooklogin() {
-        return facebooklogin;
+    public boolean isFacebookuser() {
+        return isFacebookuser;
     }
 
-    public void setFacebooklogin(String facebooklogin) {
-        this.facebooklogin = facebooklogin;
-    }
-
-    public String getFacebookpassword() {
-        return facebookpassword;
-    }
-
-    public void setFacebookpassword(String facebookpassword) {
-        this.facebookpassword = facebookpassword;
+    public void setFacebookuser(boolean facebookuser) {
+        isFacebookuser = facebookuser;
     }
 
     public int getCurrentyouthcentre() {
