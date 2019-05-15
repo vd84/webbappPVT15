@@ -1,7 +1,6 @@
 package WebbAppPVT15Grupp2.Models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,7 +9,13 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "activity")
+@Data
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "sproc_add_activity",
+                procedureName = "sproc_add_activity",
+                resultClasses = Activity.class),
+
+})
 public class Activity {
 
     @Id
@@ -25,13 +30,12 @@ public class Activity {
     private Timestamp enddate;
     private String name;
     private String description;
-    private int responsibleuser;
-
     private String alternativelocation;
     private boolean issuggestion;
     private boolean isactive;
     private int category;
     private int resource;
+
 
     public int getId() {
         return id;
@@ -87,14 +91,6 @@ public class Activity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getResponsibleuser() {
-        return responsibleuser;
-    }
-
-    public void setResponsibleuser(int responsibleuser) {
-        this.responsibleuser = responsibleuser;
     }
 
     public String getAlternativelocation() {
