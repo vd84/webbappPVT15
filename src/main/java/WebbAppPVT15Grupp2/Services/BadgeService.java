@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,4 +40,15 @@ public class BadgeService {
         return new ResponseEntity<>(oneBadge, HttpStatus.OK);
 
     }
+
+    @RequestMapping(value = "/badgebyyouthcentre/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Badge>> getBadgeByYouthcentre(@PathVariable("id") int id){
+        Iterable<Badge> badges = repository.getYouthcentreBadges(id);
+
+        ArrayList<Badge> youthcentreBadges = new ArrayList<>();
+        badges.forEach(youthcentreBadges::add);
+
+        return new ResponseEntity<>(youthcentreBadges,HttpStatus.OK);
+    }
+
 }

@@ -10,4 +10,6 @@ public interface BadgeRepositoryCustom {
 
     List<Badge> getUsersBadges(int id);
 
+    List<Badge> getYouthcentreBadges(int id);
+
 }
