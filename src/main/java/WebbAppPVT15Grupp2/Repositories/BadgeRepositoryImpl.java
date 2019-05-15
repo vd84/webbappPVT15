@@ -31,4 +31,17 @@ public class BadgeRepositoryImpl implements BadgeRepositoryCustom {
 
         return storedProc.getResultList();
     }
+
+    @Override
+    public List<Badge> getYouthcentreBadges(int id) {
+
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_badge_by_youthcentreid");
+
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
+
+        storedProc.setParameter(1, id);
+
+        return storedProc.getResultList();
+    }
+
 }
