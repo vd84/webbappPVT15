@@ -14,6 +14,12 @@ import java.sql.Timestamp;
         @NamedStoredProcedureQuery(name = "sproc_add_activity",
                 procedureName = "sproc_add_activity",
                 resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_get_all_active_activites",
+                procedureName = "sproc_get_all_active_activites",
+                resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_get_my_activities",
+                procedureName = "sproc_get_my_activities",
+                resultClasses = Activity.class),
 
 })
 public class Activity {
@@ -24,6 +30,7 @@ public class Activity {
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Timestamp registrationdate;
     private int createdby;
+    private int responsibleuser;
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Timestamp startdate;
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
@@ -35,6 +42,10 @@ public class Activity {
     private boolean isactive;
     private int category;
     private int resource;
+    private int challenger;
+    private int challenged;
+    private boolean completed;
+    private String winner;
 
 
     public int getId() {
@@ -59,6 +70,14 @@ public class Activity {
 
     public void setCreatedby(int createdby) {
         this.createdby = createdby;
+    }
+
+    public int getResponsibleuser() {
+        return responsibleuser;
+    }
+
+    public void setResponsibleuser(int responsibleuser) {
+        this.responsibleuser = responsibleuser;
     }
 
     public Timestamp getStartdate() {
@@ -131,5 +150,37 @@ public class Activity {
 
     public void setResource(int resource) {
         this.resource = resource;
+    }
+
+    public int getChallenger() {
+        return challenger;
+    }
+
+    public void setChallenger(int challenger) {
+        this.challenger = challenger;
+    }
+
+    public int getChallenged() {
+        return challenged;
+    }
+
+    public void setChallenged(int challenged) {
+        this.challenged = challenged;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }

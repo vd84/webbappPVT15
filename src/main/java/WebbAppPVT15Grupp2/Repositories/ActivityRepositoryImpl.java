@@ -16,15 +16,20 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
     @Override
     public List<Activity> getAllActivities() {
-        return null;
+
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_all_active_activites");
+
+
+        return storedProc.getResultList();
+
     }
 
     @Override
-    public List<Activity> addActivity(String userId, String activityName, String activityDescription, String responsibleUser,  String altlocation, String category, String resource) {
+    public List<Activity> addActivity(String createdby, String responsibleUser, String activityname, String description, String altLocation, String isSuggestion, String category, String resource, String challenger, String challenged) {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_add_activity");
-
 
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -34,25 +39,41 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
 
 
-
-
-        storedProc.setParameter(1, userId);
-        storedProc.setParameter(2, activityName);
-        storedProc.setParameter(3, activityDescription);
+        storedProc.setParameter(1, createdby);
+        storedProc.setParameter(2, activityname);
+        storedProc.setParameter(3, description);
         storedProc.setParameter(4, responsibleUser);
-        storedProc.setParameter(5, altlocation);
-        storedProc.setParameter(6, category);
-        storedProc.setParameter(7, resource);
-
-
-
+        storedProc.setParameter(5, altLocation);
+        storedProc.setParameter(6, isSuggestion);
+        storedProc.setParameter(7, category);
+        storedProc.setParameter(8, resource);
+        storedProc.setParameter(9, challenger);
+        storedProc.setParameter(10, challenged);
 
 
         return storedProc.getResultList();
 
 
-
     }
+
+    @Override
+    public List<Activity> getAllMyActivites(String id) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_my_activities");
+
+
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+
+
+        storedProc.setParameter(1, id);
+
+
+        return storedProc.getResultList();
+    }
+
 }

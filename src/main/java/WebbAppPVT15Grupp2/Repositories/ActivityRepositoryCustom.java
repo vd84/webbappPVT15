@@ -8,7 +8,8 @@ public interface ActivityRepositoryCustom {
 
     List<Activity> getAllActivities();
 
-    List<Activity> addActivity(String userId, String activityName, String activityDescription, String responsibleUser,  String altlocation, String category, String resource);
+    List<Activity> addActivity(String createdby, String responsibleUser, String activityname, String description, String altLocation, String isSuggestion, String category, String resource, String challenger, String challenged);
 
+    List<Activity> getAllMyActivites(String id);
 
 }
