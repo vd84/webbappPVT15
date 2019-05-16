@@ -12,4 +12,6 @@ public interface BadgeRepositoryCustom {
 
     List<Badge> getYouthcentreBadges(int id);
 
+    List<Badge> addBadgeToUser(int userid, int badgeid);
+
 }

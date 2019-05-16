@@ -19,10 +19,16 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
+    @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "Incorrect credentials")
+    public class incorrectLogin extends RuntimeException{
+
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ResponseEntity<List<ReturnUser>> getAllUsers() {
+
 
         Iterable<ReturnUser> users = repository.getAllUsers();
 
@@ -43,6 +49,7 @@ public class UserService {
         return new ResponseEntity<>(target, HttpStatus.OK);
     }
 
+
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
         Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword(), String.valueOf(loginUser.getIsFacebookuser()));
@@ -52,6 +59,7 @@ public class UserService {
         if (((List<ReturnUser>) users).size() != 0) {
             return new ResponseEntity<>(target, HttpStatus.OK);
         }else {
+            //throw new incorrectLogin();
             return new ResponseEntity<>(target, HttpStatus.NO_CONTENT);
         }
     }

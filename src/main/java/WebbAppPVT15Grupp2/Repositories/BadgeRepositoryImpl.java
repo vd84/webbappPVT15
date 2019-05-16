@@ -44,4 +44,18 @@ public class BadgeRepositoryImpl implements BadgeRepositoryCustom {
         return storedProc.getResultList();
     }
 
+    @Override
+    public List<Badge> addBadgeToUser(int userid, int badgeid) {
+
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_add_badge_to_user");
+
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(2, int.class,ParameterMode.IN);
+
+        storedProc.setParameter(1, userid);
+        storedProc.setParameter(2, badgeid);
+
+        return storedProc.getResultList();
+    }
+
 }

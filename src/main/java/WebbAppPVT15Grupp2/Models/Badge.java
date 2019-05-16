@@ -16,6 +16,9 @@ import javax.persistence.*;
                 resultClasses = Badge.class),
         @NamedStoredProcedureQuery(name = "sproc_get_badge_by_youthcentreid",
                 procedureName = "sproc_get_badge_by_youthcentreid",
+                resultClasses = Badge.class),
+        @NamedStoredProcedureQuery(name = "sproc_add_badge_to_user",
+                procedureName = "sproc_add_badge_to_user",
                 resultClasses = Badge.class)
 })
 public class Badge {
