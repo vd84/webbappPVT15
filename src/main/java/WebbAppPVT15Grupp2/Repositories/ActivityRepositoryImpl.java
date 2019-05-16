@@ -150,4 +150,22 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
         return storedProc.getResultList();
     }
+
+    @Override
+    public List<Activity> getAllActivitiesByYouthCentre(int id) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_activities_by_youthcentre");
+
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
+
+
+
+
+
+        storedProc.setParameter(1, id);
+
+
+
+        return storedProc.getResultList();
+    }
 }

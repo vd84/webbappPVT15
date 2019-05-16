@@ -85,6 +85,19 @@ public class AcivityService {
         return new ResponseEntity<>(target, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/activity/youthcentre/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getActivityByYouthcentre(@PathVariable("id") int id) {
+        //logger.info("Fetching user by id {}", id);
+        Iterable<Activity> youthcentreActivities = repository.getAllActivitiesByYouthCentre(id);
+
+        List<Activity> target = new ArrayList<>();
+        youthcentreActivities.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+
+    }
+
 
 
 
