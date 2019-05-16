@@ -12,4 +12,7 @@ public interface ActivityRepositoryCustom {
 
     List<Activity> getAllMyActivites(String id);
 
+    List<Activity> getAllMyActivitesChallenged(String id);
+
+    List<Activity> modifyActivity(int id, String name, String description, int responsibleUser, String alternativeLocation, int isSuggestion, int isActive, int category, int resource, int challenger, int challenged, int isCompleted);
 }

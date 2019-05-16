@@ -61,5 +61,33 @@ public class AcivityService {
 
     }
 
+    @RequestMapping(value = "/activityChallenged/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllMyAcitiviesChallenged(@PathVariable("id") int id) {
+        //logger.info("Fetching user by id {}", id);
+        Iterable<Activity> myActivites = repository.getAllMyActivitesChallenged(String.valueOf(id));
+
+        List<Activity> target = new ArrayList<>();
+        myActivites.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
+
+
+    }
+
+    @RequestMapping(value = "/activity", method = RequestMethod.PUT)
+    public ResponseEntity<?> modifyUser(@RequestBody Activity modActivity) {
+
+        Iterable<Activity> changedActivity = repository.modifyActivity(modActivity.getId(), modActivity.getName(), modActivity.getDescription(), modActivity.getResponsibleuser(), modActivity.getAlternativelocation(), modActivity.getIssuggestion(), modActivity.getIsactive(), modActivity.getCategory(), modActivity.getResource(), modActivity.getChallenger(), modActivity.getChallenged(), modActivity.getCompleted());
+
+        List<Activity> target = new ArrayList<>();
+        changedActivity.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
+    }
+
+
+
+
+
 
 }

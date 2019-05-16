@@ -20,6 +20,13 @@ import java.sql.Timestamp;
         @NamedStoredProcedureQuery(name = "sproc_get_my_activities",
                 procedureName = "sproc_get_my_activities",
                 resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_get_my_challenges",
+                procedureName = "sproc_get_my_challenges",
+                resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_update_activity",
+                procedureName = "sproc_update_activity",
+                resultClasses = Activity.class),
+
 
 })
 public class Activity {
