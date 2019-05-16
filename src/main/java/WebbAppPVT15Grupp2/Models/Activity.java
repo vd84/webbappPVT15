@@ -120,19 +120,19 @@ public class Activity {
         this.alternativelocation = alternativelocation;
     }
 
-    public boolean isIssuggestion() {
+    public int getIssuggestion() {
         return issuggestion;
     }
 
-    public void setIssuggestion(boolean issuggestion) {
+    public void setIssuggestion(int issuggestion) {
         this.issuggestion = issuggestion;
     }
 
-    public boolean isIsactive() {
+    public int getIsactive() {
         return isactive;
     }
 
-    public void setIsactive(boolean isactive) {
+    public void setIsactive(int isactive) {
         this.isactive = isactive;
     }
 
@@ -168,11 +168,11 @@ public class Activity {
         this.challenged = challenged;
     }
 
-    public boolean isCompleted() {
+    public int getCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(int completed) {
         this.completed = completed;
     }
 
