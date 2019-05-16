@@ -34,7 +34,7 @@ public class ParticipationService {
     }
 
 
-    @RequestMapping(value = "/participation", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/participation/delete", method = RequestMethod.POST)
     public ResponseEntity<?> deleteParticipation(@RequestBody Participation deleteParticipation, UriComponentsBuilder ucBuilder) {
         Iterable<Participation> deletedParticipant = repository.deleteParticipation(deleteParticipation.getUser(), deleteParticipation.getActivity());
 
