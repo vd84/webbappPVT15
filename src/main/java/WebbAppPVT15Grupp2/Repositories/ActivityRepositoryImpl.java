@@ -18,7 +18,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     public List<Activity> getAllActivities() {
 
         StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_all_active_activites");
+                em.createNamedStoredProcedureQuery("`sproc_get_all_active_activities`");
 
 
         return storedProc.getResultList();
