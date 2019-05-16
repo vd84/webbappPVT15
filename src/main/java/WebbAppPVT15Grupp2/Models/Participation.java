@@ -12,6 +12,9 @@ import java.sql.Timestamp;
         @NamedStoredProcedureQuery(name = "sproc_add_participation",
                 procedureName = "sproc_add_participation",
                 resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_delete_user_participation",
+                procedureName = "sproc_delete_user_participation",
+                resultClasses = Participation.class),
 
 
 

@@ -33,4 +33,15 @@ public class ParticipationService {
         return repository.findAll();
     }
 
+
+    @RequestMapping(value = "/participation", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteParticipation(@RequestBody Participation deleteParticipation, UriComponentsBuilder ucBuilder) {
+        Iterable<Participation> deletedParticipant = repository.deleteParticipation(deleteParticipation.getUser(), deleteParticipation.getActivity());
+
+        List<Participation> target = new ArrayList<>();
+        deletedParticipant.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);    }
+
+
 }
