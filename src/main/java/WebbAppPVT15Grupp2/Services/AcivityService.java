@@ -20,7 +20,7 @@ public class AcivityService {
     @RequestMapping(value = "/activity", method = RequestMethod.POST)
     public ResponseEntity<?> addActivity(@RequestBody Activity addActivity, UriComponentsBuilder ucBuilder) {
         //logger.info("Creating User : {}", addActivity);
-        Iterable<Activity> users = repository.addActivity(String.valueOf(addActivity.getCreatedby()), String.valueOf(addActivity.getResponsibleuser()), addActivity.getName(), addActivity.getDescription(), addActivity.getAlternativelocation(), String.valueOf(addActivity.isIssuggestion()), String.valueOf(addActivity.getCategory()), String.valueOf(addActivity.getResource()), String.valueOf(addActivity.getChallenger()), String.valueOf(addActivity.getChallenged()));
+        Iterable<Activity> users = repository.addActivity(String.valueOf(addActivity.getCreatedby()), String.valueOf(addActivity.getResponsibleuser()), addActivity.getName(), addActivity.getDescription(), addActivity.getAlternativelocation(), String.valueOf(addActivity.getIssuggestion()), String.valueOf(addActivity.getCategory()), String.valueOf(addActivity.getResource()), String.valueOf(addActivity.getChallenger()), String.valueOf(addActivity.getChallenged()));
 
         List<Activity> target = new ArrayList<>();
         users.forEach(target::add);
@@ -73,6 +73,19 @@ public class AcivityService {
 
 
     }
+
+    @RequestMapping(value = "/activity", method = RequestMethod.PUT)
+    public ResponseEntity<?> modifyUser(@RequestBody Activity modActivity) {
+
+        Iterable<Activity> changedActivity = repository.modifyActivity(modActivity.getId(), modActivity.getName(), modActivity.getDescription(), modActivity.getResponsibleuser(), modActivity.getAlternativelocation(), modActivity.getIssuggestion(), modActivity.getIsactive(), modActivity.getCategory(), modActivity.getResource(), modActivity.getChallenger(), modActivity.getChallenged(), modActivity.getCompleted());
+
+        List<Activity> target = new ArrayList<>();
+        changedActivity.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
+    }
+
+
 
 
 

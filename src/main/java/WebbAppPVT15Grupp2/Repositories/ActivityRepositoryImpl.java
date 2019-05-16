@@ -18,7 +18,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     public List<Activity> getAllActivities() {
 
         StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_all_active_activities");
+                em.createNamedStoredProcedureQuery("`sproc_get_all_active_activities`");
 
 
         return storedProc.getResultList();
@@ -91,5 +91,62 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
         return storedProc.getResultList();
 
+
+    }
+
+    @Override
+    public List<Activity> modifyActivity(int id, String name, String description, int responsibleUser, String alternativeLocation, int isSuggestion, int isActive, int category, int resource, int challenger, int challenged, int isCompleted) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_update_activity");
+
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
+
+
+        storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(4, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(6, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(7, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(8, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(9, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(10, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(11, int.class, ParameterMode.IN);
+
+        storedProc.registerStoredProcedureParameter(12, int.class, ParameterMode.IN);
+
+
+        storedProc.setParameter(1, id);
+
+        storedProc.setParameter(2, name);
+        storedProc.setParameter(3, description);
+
+        storedProc.setParameter(4, responsibleUser);
+
+        storedProc.setParameter(5, alternativeLocation);
+
+        storedProc.setParameter(6, isSuggestion);
+
+        storedProc.setParameter(7, isActive);
+
+        storedProc.setParameter(8, category);
+
+        storedProc.setParameter(9, resource);
+        storedProc.setParameter(10, challenger);
+
+        storedProc.setParameter(11, challenged);
+
+        storedProc.setParameter(12, isCompleted);
+
+
+
+        return storedProc.getResultList();
     }
 }

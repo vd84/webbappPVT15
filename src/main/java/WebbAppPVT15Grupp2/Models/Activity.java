@@ -14,8 +14,8 @@ import java.sql.Timestamp;
         @NamedStoredProcedureQuery(name = "sproc_add_activity",
                 procedureName = "sproc_add_activity",
                 resultClasses = Activity.class),
-        @NamedStoredProcedureQuery(name = "sproc_get_all_active_activities",
-                procedureName = "sproc_get_all_active_activities",
+        @NamedStoredProcedureQuery(name = "`sproc_get_all_active_activities`",
+                procedureName = "`sproc_get_all_active_activities`",
                 resultClasses = Activity.class),
         @NamedStoredProcedureQuery(name = "sproc_get_my_activities",
                 procedureName = "sproc_get_my_activities",
@@ -23,6 +23,10 @@ import java.sql.Timestamp;
         @NamedStoredProcedureQuery(name = "sproc_get_my_challenges",
                 procedureName = "sproc_get_my_challenges",
                 resultClasses = Activity.class),
+        @NamedStoredProcedureQuery(name = "sproc_update_activity",
+                procedureName = "sproc_update_activity",
+                resultClasses = Activity.class),
+
 
 })
 public class Activity {
@@ -41,13 +45,13 @@ public class Activity {
     private String name;
     private String description;
     private String alternativelocation;
-    private boolean issuggestion;
-    private boolean isactive;
+    private int issuggestion;
+    private int isactive;
     private int category;
     private int resource;
     private int challenger;
     private int challenged;
-    private boolean completed;
+    private int completed;
     private String winner;
 
 
@@ -123,19 +127,19 @@ public class Activity {
         this.alternativelocation = alternativelocation;
     }
 
-    public boolean isIssuggestion() {
+    public int getIssuggestion() {
         return issuggestion;
     }
 
-    public void setIssuggestion(boolean issuggestion) {
+    public void setIssuggestion(int issuggestion) {
         this.issuggestion = issuggestion;
     }
 
-    public boolean isIsactive() {
+    public int getIsactive() {
         return isactive;
     }
 
-    public void setIsactive(boolean isactive) {
+    public void setIsactive(int isactive) {
         this.isactive = isactive;
     }
 
@@ -171,11 +175,11 @@ public class Activity {
         this.challenged = challenged;
     }
 
-    public boolean isCompleted() {
+    public int getCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(int completed) {
         this.completed = completed;
     }
 

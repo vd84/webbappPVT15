@@ -1,11 +1,21 @@
 package WebbAppPVT15Grupp2.Models;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "participation")
+@Data
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "sproc_add_participation",
+                procedureName = "sproc_add_participation",
+                resultClasses = Activity.class),
+
+
+
+})
 public class Participation {
 
     @Id
