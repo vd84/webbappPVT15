@@ -126,6 +126,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.setParameter(1, id);
 
         storedProc.setParameter(2, name);
+
         storedProc.setParameter(3, description);
 
         storedProc.setParameter(4, responsibleUser);
