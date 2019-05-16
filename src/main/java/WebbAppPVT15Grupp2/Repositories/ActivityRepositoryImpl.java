@@ -18,7 +18,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     public List<Activity> getAllActivities() {
 
         StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_all_active_activites");
+                em.createNamedStoredProcedureQuery("sproc_get_all_active_activities");
 
 
         return storedProc.getResultList();
@@ -76,4 +76,20 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         return storedProc.getResultList();
     }
 
+    @Override
+    public List<Activity> getAllMyActivitesChallenged(String id) {
+
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_get_my_challenges");
+
+
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+
+
+        storedProc.setParameter(1, id);
+
+
+        return storedProc.getResultList();
+
+    }
 }

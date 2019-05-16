@@ -12,4 +12,5 @@ public interface ActivityRepositoryCustom {
 
     List<Activity> getAllMyActivites(String id);
 
+    List<Activity> getAllMyActivitesChallenged(String id);
 }
