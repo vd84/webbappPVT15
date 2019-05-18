@@ -55,8 +55,9 @@ public class Activity {
     private int challenger;
     private int challenged;
     private int completed;
-    private String winner;
-
+    private int winner;
+    private int challengeaccepted;
+    private int challengerejected;
 
     public int getId() {
         return id;
@@ -186,11 +187,27 @@ public class Activity {
         this.completed = completed;
     }
 
-    public String getWinner() {
+    public int getWinner() {
         return winner;
     }
 
-    public void setWinner(String winner) {
+    public void setWinner(int winner) {
         this.winner = winner;
+    }
+
+    public int getChallengeaccepted() {
+        return challengeaccepted;
+    }
+
+    public void setChallengeaccepted(int challengeaccepted) {
+        this.challengeaccepted = challengeaccepted;
+    }
+
+    public int getChallengerejected() {
+        return challengerejected;
+    }
+
+    public void setChallengerejected(int challengerejected) {
+        this.challengerejected = challengerejected;
     }
 }
