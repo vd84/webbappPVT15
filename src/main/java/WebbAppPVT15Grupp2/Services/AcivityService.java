@@ -38,13 +38,10 @@ public class AcivityService {
         //logger.info("Fetching user by id {}", id);
         Iterable<Activity> allActivities = repository.getAllActivities();
 
-
         List<Activity> target = new ArrayList<>();
         allActivities.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
-
-
     }
 
 
@@ -57,8 +54,6 @@ public class AcivityService {
         myActivites.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
-
-
     }
 
     @RequestMapping(value = "/activityChallenged/{id}", method = RequestMethod.GET)
@@ -70,8 +65,6 @@ public class AcivityService {
         myActivites.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
-
-
     }
 
     @RequestMapping(value = "/activity", method = RequestMethod.PUT)
@@ -94,16 +87,5 @@ public class AcivityService {
         youthcentreActivities.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
-
-
     }
-
-
-
-
-
-
-
-
-
 }

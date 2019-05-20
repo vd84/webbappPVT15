@@ -42,6 +42,4 @@ public class ParticipationService {
         deletedParticipant.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);    }
-
-
 }

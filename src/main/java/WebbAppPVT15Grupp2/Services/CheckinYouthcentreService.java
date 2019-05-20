@@ -66,11 +66,11 @@ public class CheckinYouthcentreService {
             //skickar tillbaka den nya badgen
             //return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
             //skickar tillbaka den länk som skapats
-            return new ResponseEntity<>(target, HttpStatus.CREATED);
+                return new ResponseEntity<>(target, HttpStatus.CREATED);
             }catch (DataIntegrityViolationException e){
                 System.out.println("Already have the badge");
             }
-        }catch (DataIntegrityViolationException e){
+        }catch (DataIntegrityViolationException dve){
             throw new alreadyCheckedin();
 
         }
