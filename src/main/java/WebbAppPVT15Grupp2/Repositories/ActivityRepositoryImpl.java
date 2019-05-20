@@ -116,6 +116,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.registerStoredProcedureParameter(12, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(13, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(14, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(15, int.class, ParameterMode.IN);
 
 
         storedProc.setParameter(1, id);
