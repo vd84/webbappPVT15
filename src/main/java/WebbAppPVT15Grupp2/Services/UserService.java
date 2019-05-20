@@ -40,17 +40,12 @@ public class UserService {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<ReturnUser>> getOneUser(@PathVariable("id") int id) {
-
-
         Iterable<ReturnUser> users = repository.getOneUser(String.valueOf(id));
 
         List<ReturnUser> target = new ArrayList<>();
         users.forEach(target::add);
         return new ResponseEntity<>(target, HttpStatus.OK);
     }
-
-
-    //kjdsfkjshfdkjhdsf
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
