@@ -31,18 +31,18 @@ public class CheckinActivityService {
     }
 
     @RequestMapping(value = "/checkinactivity", method = RequestMethod.POST)
-    public ResponseEntity<List<CheckinActivity>> checkinOnActivity(@RequestBody CheckinActivity checkinactivity){
+    public ResponseEntity<List<Badge>> checkinOnActivity(@RequestBody CheckinActivity checkinactivity){
         try {
             Iterable<CheckinActivity> activityCheckins = repository.addCheckinActivityToUser(String.valueOf(checkinactivity.getUserid()), String.valueOf(checkinactivity.getActivityid()));
 
             List<CheckinActivity> target = new ArrayList<>();
             activityCheckins.forEach(target::add);
             try {
-                List<Badge> newBadge = new ArrayList<>();
+                List<Badge> newBadges = new ArrayList<>();
                 Iterable<Badge> addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), FIRST_TIME_PARTICIPANT.getId());
-                addedBadge.forEach(newBadge::add);
+                addedBadge.forEach(newBadges::add);
 
-                return new ResponseEntity<>(target, HttpStatus.CREATED);
+                return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
 
             }catch (DataIntegrityViolationException e){
                 System.out.println("Already have the badge");

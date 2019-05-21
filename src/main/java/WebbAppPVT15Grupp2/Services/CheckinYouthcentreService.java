@@ -33,7 +33,7 @@ public class CheckinYouthcentreService {
 
 
     @RequestMapping(value = "/checkinyouthcentre", method = RequestMethod.POST)
-    public ResponseEntity<List<CheckinYouthcentre>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
+    public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
     //public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
 
         try {
@@ -66,7 +66,7 @@ public class CheckinYouthcentreService {
             //skickar tillbaka den nya badgen
             //return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
             //skickar tillbaka den länk som skapats
-                return new ResponseEntity<>(target, HttpStatus.CREATED);
+                return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
             }catch (DataIntegrityViolationException e){
                 System.out.println("Already have the badge");
             }

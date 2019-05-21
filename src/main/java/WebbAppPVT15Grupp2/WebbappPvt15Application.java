@@ -1,6 +1,8 @@
 package WebbAppPVT15Grupp2;
 
 import WebbAppPVT15Grupp2.Models.ExternalYouthCenter;
+import com.github.goober.coordinatetransformation.positions.RT90Position;
+import com.github.goober.coordinatetransformation.positions.WGS84Position;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,7 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.ParseException;
 import java.util.List;
+
+import static org.aspectj.bridge.MessageUtil.fail;
 
 @SpringBootApplication
 public class WebbappPvt15Application {
@@ -17,7 +22,7 @@ public class WebbappPvt15Application {
     public static void main(String[] args) {
         //SpringApplication.run(WebbappPvt15Application.class, args);
 
-        //getExternal();
+        getExternal();
 
 
 
@@ -44,6 +49,27 @@ public class WebbappPvt15Application {
         });
 
         List<ExternalYouthCenter> list = ycResponse.getBody();
+
+
+        /**
+         * konvertering av koordinater från x,y till GPS format
+         */
+
+        RT90Position position = new RT90Position(6583052, 1627548);
+        WGS84Position wgsPos = position.toWGS84();
+
+
+        double xPosFromLM = 6653174.343;
+        double yPosFromLM = 1613318.742;
+
+        double lat = ((double) Math.round(wgsPos.getLatitude() * 10000)) / 10000;
+        double lon = ((double)Math.round(wgsPos.getLongitude() * 10000)) / 10000;
+
+        //double lat = ((double) Math.round(rtPos.getLatitude() * 1000) / 1000);
+        //double lon = ((double) Math.round(rtPos.getLongitude() * 1000) / 1000);
+
+        System.out.println("Lat: " + lat);
+        System.out.println("Lon: " + lon);
 
         for (ExternalYouthCenter yc : list) {
             System.out.println(yc);
