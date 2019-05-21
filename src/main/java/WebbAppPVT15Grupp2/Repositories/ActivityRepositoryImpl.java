@@ -139,9 +139,9 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.setParameter(12, challenger);
         storedProc.setParameter(13, challenged);
         storedProc.setParameter(14, isCompleted);
-        storedProc.setParameter(15, winner);
-        storedProc.setParameter(16, challengeaccepted);
-        storedProc.setParameter(17, challengerejected);
+        storedProc.setParameter(15, challengeaccepted);
+        storedProc.setParameter(16, challengerejected);
+        storedProc.setParameter(17, winner);
 
         return storedProc.getResultList();
     }
