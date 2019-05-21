@@ -10,7 +10,7 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private double lng;
+    private double lon;
     private double lat;
 
     public int getId() {
@@ -21,12 +21,12 @@ public class Location {
         this.id = id;
     }
 
-    public double getLng() {
-        return lng;
+    public double getLon() {
+        return lon;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     public double getLat() {

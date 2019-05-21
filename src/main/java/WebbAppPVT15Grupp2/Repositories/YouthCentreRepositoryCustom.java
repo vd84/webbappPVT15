@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface YouthCentreRepositoryCustom {
     List<ReturnYouthcentre> getAllYouthcentres();
+
+    List<ReturnYouthcentre> addYouthcentre(double lon, double lat, String name);
 }

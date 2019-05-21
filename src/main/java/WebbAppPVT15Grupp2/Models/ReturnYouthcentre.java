@@ -12,6 +12,9 @@ import javax.persistence.*;
                 resultClasses = ExternalYouthCenter.class),
         @NamedStoredProcedureQuery(name = "sproc_get_all_youthcentres",
                 procedureName = "sproc_get_all_youthcentres",
+                resultClasses = ReturnYouthcentre.class),
+        @NamedStoredProcedureQuery(name ="sproc_add_youthcentre",
+                procedureName = "sproc_add_youthcentre",
                 resultClasses = ReturnYouthcentre.class)
 })
 
@@ -80,5 +83,18 @@ public class ReturnYouthcentre {
 
     public void setCurrentactivactivities(int currentactivactivities) {
         this.currentactivactivities = currentactivactivities;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ReturnYouthcentre) {
+            ReturnYouthcentre ryc = (ReturnYouthcentre)obj;
+            if (this.name.equals(ryc.name) && this.lat == ryc.lat && this.lon == ryc.lon) {
+                return true;
+            }
+        }
+
+        return false;
+
     }
 }
