@@ -62,6 +62,7 @@ public class Activity {
     private int challengeaccepted;
     private int challengerejected;
 
+
     public int getId() {
         return id;
     }
@@ -94,19 +95,19 @@ public class Activity {
         this.responsibleuser = responsibleuser;
     }
 
-    public String getStartdate() {
+    public Timestamp getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(String startdate) {
+    public void setStartdate(Timestamp startdate) {
         this.startdate = startdate;
     }
 
-    public String getEnddate() {
+    public Timestamp getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(String enddate) {
+    public void setEnddate(Timestamp enddate) {
         this.enddate = enddate;
     }
 
