@@ -1,5 +1,6 @@
 package WebbAppPVT15Grupp2.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -42,9 +43,11 @@ public class Activity {
     private int createdby;
     private int responsibleuser;
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private Timestamp startdate;
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    @Column(name = "startdate")
+    private String startdate;
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private Timestamp enddate;
+    private String enddate;
     private String name;
     private String description;
     private String alternativelocation;
@@ -91,19 +94,19 @@ public class Activity {
         this.responsibleuser = responsibleuser;
     }
 
-    public Timestamp getStartdate() {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Timestamp startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public Timestamp getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Timestamp enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 
