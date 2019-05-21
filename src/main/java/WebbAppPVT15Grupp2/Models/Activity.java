@@ -45,9 +45,9 @@ public class Activity {
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     @Column(name = "startdate")
-    private Timestamp startdate;
+    private String startdate;
    // @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private Timestamp enddate;
+    private String enddate;
     private String name;
     private String description;
     private String alternativelocation;
@@ -61,7 +61,6 @@ public class Activity {
     private int winner;
     private int challengeaccepted;
     private int challengerejected;
-
 
     public int getId() {
         return id;
@@ -95,19 +94,19 @@ public class Activity {
         this.responsibleuser = responsibleuser;
     }
 
-    public Timestamp getStartdate() {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Timestamp startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public Timestamp getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Timestamp enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 
