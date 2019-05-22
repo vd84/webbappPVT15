@@ -25,7 +25,6 @@ public class AcivityService {
         List<Activity> target = new ArrayList<>();
         users.forEach(target::add);
         return new ResponseEntity<>(target, HttpStatus.CREATED);
-
     }
 
     @GetMapping("/allActivity")
@@ -43,7 +42,6 @@ public class AcivityService {
 
         return new ResponseEntity<>(target, HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "/activity/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllMyAcitivies(@PathVariable("id") int id) {

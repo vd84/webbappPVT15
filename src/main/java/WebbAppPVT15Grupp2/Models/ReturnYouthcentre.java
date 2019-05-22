@@ -27,6 +27,7 @@ public class ReturnYouthcentre {
     private String name;
     private double lat;
     private double lon;
+    private int checkedin;
     private int currentactivactivities;
 
     public int getId() {
@@ -77,6 +78,14 @@ public class ReturnYouthcentre {
         this.lon = lon;
     }
 
+    public int getCheckedin() {
+        return checkedin;
+    }
+
+    public void setCheckedin(int checkedin) {
+        this.checkedin = checkedin;
+    }
+
     public int getCurrentactivactivities() {
         return currentactivactivities;
     }
@@ -90,7 +99,7 @@ public class ReturnYouthcentre {
         if (obj instanceof ReturnYouthcentre) {
             ReturnYouthcentre ryc = (ReturnYouthcentre)obj;
             if (this.name.equals(ryc.name) && this.lat == ryc.lat && this.lon == ryc.lon) {
-                return true;
+                    return true;
             }
         }
 

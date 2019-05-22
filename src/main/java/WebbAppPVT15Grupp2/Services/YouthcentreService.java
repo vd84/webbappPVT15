@@ -1,7 +1,9 @@
 package WebbAppPVT15Grupp2.Services;
 
 //import WebbAppPVT15Grupp2.Models.Youthcentre;
+import WebbAppPVT15Grupp2.Models.ReturnUser;
 import WebbAppPVT15Grupp2.Models.ReturnYouthcentre;
+import WebbAppPVT15Grupp2.Models.User;
 import WebbAppPVT15Grupp2.Models.Youthcentre;
 import WebbAppPVT15Grupp2.Repositories.YouthcentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,9 @@ public class YouthcentreService {
     @Autowired
     YouthcentreRepository repository;
 
-    @RequestMapping(value = "/youthcentre", method = RequestMethod.GET)
-    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres(){
-        Iterable<ReturnYouthcentre> returnYouthcentres = repository.getAllYouthcentres();
+    @RequestMapping(value = "/youthcentre/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres(@PathVariable("id") int id){
+        Iterable<ReturnYouthcentre> returnYouthcentres = repository.getAllYouthcentres(id);
 
         List<ReturnYouthcentre> target = new ArrayList<>();
         returnYouthcentres.forEach(target::add);

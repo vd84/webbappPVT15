@@ -16,9 +16,13 @@ public class YouthcentreRepositoryImpl implements YouthCentreRepositoryCustom {
 
 
     @Override
-    public List<ReturnYouthcentre> getAllYouthcentres() {
+    public List<ReturnYouthcentre> getAllYouthcentres(int userid) {
 
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_youthcentres");
+
+        storedProc.registerStoredProcedureParameter(1, int.class,ParameterMode.IN);
+
+        storedProc.setParameter(1, userid);
         return storedProc.getResultList();
     }
 

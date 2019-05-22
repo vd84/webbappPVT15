@@ -24,19 +24,12 @@ public class WebbappPvt15Application {
 
     public static void main(String[] args) {
         //SpringApplication.run(WebbappPvt15Application.class, args);
-
-
         ConfigurableApplicationContext c = SpringApplication.run(WebbappPvt15Application.class, args);
 
         YouthcentreRepository repo = c.getBean(YouthcentreRepository.class);
-        List<ReturnYouthcentre> existingYouthcentres =  ((YouthcentreRepository) repo).getAllYouthcentres();
-        //Iterable<Youthcentre> tempusers = ((YouthcentreRepository) repo).getAllYouthcentres();
+        List<ReturnYouthcentre> existingYouthcentres =  ((YouthcentreRepository) repo).getAllYouthcentres(0);
 
         List<ExternalYouthCenter> externalYouthcenters = getExternal();
-        //List<ReturnYouthcentre> incomingReturnYouthcentres = new ArrayList<>();
-
-
-        System.out.println(existingYouthcentres);
 
         /**
          * konvertering av koordinater från x,y till GPS format
@@ -44,7 +37,6 @@ public class WebbappPvt15Application {
 
         RT90Position position;
         WGS84Position wgsPos;
-
 
         for (ExternalYouthCenter eyc : externalYouthcenters) {
             position = new RT90Position(eyc.getGeographicalPosition().getX(), eyc.getGeographicalPosition().getY());
@@ -58,32 +50,14 @@ public class WebbappPvt15Application {
             ryc.setLat(lat);
             ryc.setLon(lon);
 
-            /*ryc.setName("DSV YouthCentre");
-            ryc.setLat(59.406646);
-            ryc.setLon(17.94528);*/
-
-            //incomingReturnYouthcentres.add(ryc);
-            System.out.println(eyc.getName() + " : " + eyc.getName().length());
+            //System.out.println(eyc.getName() + " : " + eyc.getName().length());
             if (!existingYouthcentres.contains(ryc)){
 
                 //List<ReturnYouthcentre> addedYouthcentre = ((YouthcentreRepository) repo).addYouthcentre(lon,lat,eyc.getName());
                 repo.addYouthcentre(lon,lat,eyc.getName());
             }
-
-//            System.out.println(eyc);
-//            System.out.println(eyc.getName() + " - Lat: " + lat + ", Lon: " + lon);
         }
-
-
-//        System.out.println("test");
-
-       /* ActivityRepository repo = c.getBean(ActivityRepository.class);
-        Iterable<Activity> tempusers = ((ActivityRepository) repo).getAllActivities();
-        System.out.println(tempusers);*/
-
     }
-
-
 
     @RequestMapping("/")
     String index() {
