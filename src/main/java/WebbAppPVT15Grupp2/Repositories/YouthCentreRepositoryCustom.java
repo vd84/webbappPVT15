@@ -8,5 +8,7 @@ import WebbAppPVT15Grupp2.Models.Youthcentre;
 import java.util.List;
 
 public interface YouthCentreRepositoryCustom {
-    List<ReturnYouthcentre> getAllYouthcentres();
+    List<ReturnYouthcentre> getAllYouthcentres(int userid);
+
+    List<ReturnYouthcentre> addYouthcentre(double lon, double lat, String name);
 }
