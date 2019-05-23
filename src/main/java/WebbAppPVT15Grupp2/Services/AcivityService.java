@@ -47,9 +47,9 @@ public class AcivityService {
     @RequestMapping(value = "/activity/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllMyAcitivies(@PathVariable("id") int id) {
         //logger.info("Fetching user by id {}", id);
-        Iterable<Activity> myActivites = repository.getAllMyActivites(String.valueOf(id));
+        Iterable<ReturnActivity> myActivites = repository.getAllMyActivites(String.valueOf(id));
 
-        List<Activity> target = new ArrayList<>();
+        List<ReturnActivity> target = new ArrayList<>();
         myActivites.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);

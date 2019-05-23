@@ -70,7 +70,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     }
 
     @Override
-    public List<Activity> getAllMyActivites(String id) {
+    public List<ReturnActivity> getAllMyActivites(String id) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_my_activities");
 

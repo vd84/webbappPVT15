@@ -9,9 +9,12 @@ import java.sql.Timestamp;
 @Entity
 @Data
 @NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "`sproc_get_all_active_activities`",
+                procedureName = "`sproc_get_all_active_activities`",
+                resultClasses = ReturnActivity.class),
         @NamedStoredProcedureQuery(name = "sproc_get_my_activities",
                 procedureName = "sproc_get_my_activities",
-                resultClasses = Activity.class),
+                resultClasses = ReturnActivity.class),
 })
 
 public class ReturnActivity {
@@ -31,6 +34,7 @@ public class ReturnActivity {
     private int issuggestion;
     private int isactive;
     private int category;
+    //private String categorytext;
     private int resource;
     private int challenger;
     private int challenged;
@@ -135,6 +139,14 @@ public class ReturnActivity {
     public void setCategory(int category) {
         this.category = category;
     }
+
+    /*public String getCategorytext() {
+        return categorytext;
+    }
+
+    public void setCategorytext(String categorytext) {
+        this.categorytext = categorytext;
+    }*/
 
     public int getResource() {
         return resource;
