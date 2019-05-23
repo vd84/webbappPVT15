@@ -87,7 +87,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser) {
+    public List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, String image) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_update_user");
 
@@ -104,6 +104,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+
 
 
 
@@ -119,6 +121,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(8, currentyouthcentre);
         storedProc.setParameter(9, role);
         storedProc.setParameter(10, isFacebookUser);
+        storedProc.setParameter(11, image);
+
 
 
         return storedProc.getResultList();

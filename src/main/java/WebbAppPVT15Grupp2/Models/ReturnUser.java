@@ -36,6 +36,7 @@ public class ReturnUser {
     private String youthcentrename;
     private int role;
     private int isfacebookuser;
+    private String image;
 
 
     public int getId() {
@@ -108,5 +109,13 @@ public class ReturnUser {
 
     public void setIsfacebookuser(int isfacebookuser) {
         this.isfacebookuser = isfacebookuser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

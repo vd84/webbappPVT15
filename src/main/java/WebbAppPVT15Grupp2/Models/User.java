@@ -20,6 +20,8 @@ public class User {
     private int isFacebookuser;
     private int currentyouthcentre;
     private int role;
+    private String image;
+
 
     public int getId() {
         return id;
@@ -99,5 +101,13 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
