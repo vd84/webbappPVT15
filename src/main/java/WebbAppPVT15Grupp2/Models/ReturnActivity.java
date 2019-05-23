@@ -34,7 +34,7 @@ public class ReturnActivity {
     private int issuggestion;
     private int isactive;
     private int category;
-    //private String categorytext;
+    private String categorytext;
     private int resource;
     private int challenger;
     private int challenged;
@@ -140,13 +140,13 @@ public class ReturnActivity {
         this.category = category;
     }
 
-    /*public String getCategorytext() {
+    public String getCategorytext() {
         return categorytext;
     }
 
     public void setCategorytext(String categorytext) {
         this.categorytext = categorytext;
-    }*/
+    }
 
     public int getResource() {
         return resource;

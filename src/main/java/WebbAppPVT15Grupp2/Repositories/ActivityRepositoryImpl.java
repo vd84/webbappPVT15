@@ -16,10 +16,12 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
 
     @Override
-    public List<Activity> getAllActivities() {
+    public List<ReturnActivity> getAllActivities(int userid) {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("`sproc_get_all_active_activities`");
+        storedProc.registerStoredProcedureParameter(1, int.class,ParameterMode.IN);
+        storedProc.setParameter(1, userid);
 
 
         return storedProc.getResultList();
