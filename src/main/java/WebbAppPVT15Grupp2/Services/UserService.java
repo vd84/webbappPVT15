@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //test
 @RestController
 @CrossOrigin("*")
@@ -20,7 +21,7 @@ public class UserService {
     UserRepository repository;
 
     @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "Incorrect credentials")
-    public class incorrectLogin extends RuntimeException{
+    public class incorrectLogin extends RuntimeException {
 
     }
 
@@ -50,12 +51,13 @@ public class UserService {
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<List<ReturnUser>> login(@RequestBody User loginUser) {
         Iterable<ReturnUser> users = repository.login(loginUser.getUsername(), loginUser.getPassword(), String.valueOf(loginUser.getIsFacebookuser()));
-            List<ReturnUser> target = new ArrayList<>();
-            users.forEach(target::add);
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+
 
         if (((List<ReturnUser>) users).size() != 0) {
             return new ResponseEntity<>(target, HttpStatus.OK);
-        }else {
+        } else {
             //throw new incorrectLogin();
             return new ResponseEntity<>(target, HttpStatus.NO_CONTENT);
         }
@@ -80,7 +82,7 @@ public class UserService {
     public ResponseEntity<?> modifyUser(@RequestBody User modUser) {
         logger.info("Modefying User : {}", modUser);
 
-        if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
+        if (repository.getOneUser(String.valueOf(modUser.getId())) == null) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
         Iterable<ReturnUser> users = repository.modifyUser(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getDisplayname(), modUser.getPassword(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()), String.valueOf(modUser.getCurrentyouthcentre()), String.valueOf(modUser.getRole()), String.valueOf(modUser.getIsFacebookuser()), modUser.getImage());
