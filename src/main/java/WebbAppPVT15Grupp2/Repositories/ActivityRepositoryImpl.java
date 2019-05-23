@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Repositories;
 
 import WebbAppPVT15Grupp2.Models.Activity;
+import WebbAppPVT15Grupp2.Models.ReturnActivity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;

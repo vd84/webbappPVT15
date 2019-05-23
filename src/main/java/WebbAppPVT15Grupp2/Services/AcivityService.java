@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Services;
 
 import WebbAppPVT15Grupp2.Models.Activity;
+import WebbAppPVT15Grupp2.Models.ReturnActivity;
 import WebbAppPVT15Grupp2.Repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
