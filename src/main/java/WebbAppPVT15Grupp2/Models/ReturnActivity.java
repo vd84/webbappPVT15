@@ -6,35 +6,18 @@ import lombok.Data;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-
-
-
 @Entity
 @Data
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "sproc_add_activity",
-                procedureName = "sproc_add_activity",
-                resultClasses = Activity.class),
-        /*@NamedStoredProcedureQuery(name = "`sproc_get_all_active_activities`",
+        @NamedStoredProcedureQuery(name = "`sproc_get_all_active_activities`",
                 procedureName = "`sproc_get_all_active_activities`",
-                resultClasses = Activity.class),*/
-        /*@NamedStoredProcedureQuery(name = "sproc_get_my_activities",
+                resultClasses = ReturnActivity.class),
+        @NamedStoredProcedureQuery(name = "sproc_get_my_activities",
                 procedureName = "sproc_get_my_activities",
-                resultClasses = Activity.class),*/
-        @NamedStoredProcedureQuery(name = "sproc_get_my_challenges",
-                procedureName = "sproc_get_my_challenges",
-                resultClasses = Activity.class),
-        @NamedStoredProcedureQuery(name = "sproc_update_activity",
-                procedureName = "sproc_update_activity",
-                resultClasses = Activity.class),
-        @NamedStoredProcedureQuery(name = "sproc_get_activities_by_youthcentre",
-                procedureName = "sproc_get_activities_by_youthcentre",
-                resultClasses = Activity.class),
-
-
+                resultClasses = ReturnActivity.class),
 })
-public class Activity {
 
+public class ReturnActivity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -51,6 +34,7 @@ public class Activity {
     private int issuggestion;
     private int isactive;
     private int category;
+    private String categorytext;
     private int resource;
     private int challenger;
     private int challenged;
@@ -58,6 +42,7 @@ public class Activity {
     private int winner;
     private int challengeaccepted;
     private int challengerejected;
+    private int checkedin;
 
     public int getId() {
         return id;
@@ -155,6 +140,14 @@ public class Activity {
         this.category = category;
     }
 
+    public String getCategorytext() {
+        return categorytext;
+    }
+
+    public void setCategorytext(String categorytext) {
+        this.categorytext = categorytext;
+    }
+
     public int getResource() {
         return resource;
     }
@@ -209,5 +202,13 @@ public class Activity {
 
     public void setChallengerejected(int challengerejected) {
         this.challengerejected = challengerejected;
+    }
+
+    public int getCheckedin() {
+        return checkedin;
+    }
+
+    public void setCheckedin(int checkedin) {
+        this.checkedin = checkedin;
     }
 }

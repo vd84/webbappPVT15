@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Services;
 
 import WebbAppPVT15Grupp2.Models.Activity;
+import WebbAppPVT15Grupp2.Models.ReturnActivity;
 import WebbAppPVT15Grupp2.Repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,12 +33,12 @@ public class AcivityService {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "/activity", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllActivites() {
+    @RequestMapping(value = "/allactivity/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllActivites(@PathVariable("id") int id) {
         //logger.info("Fetching user by id {}", id);
-        Iterable<Activity> allActivities = repository.getAllActivities();
+        Iterable<ReturnActivity> allActivities = repository.getAllActivities(id);
 
-        List<Activity> target = new ArrayList<>();
+        List<ReturnActivity> target = new ArrayList<>();
         allActivities.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
@@ -46,9 +47,9 @@ public class AcivityService {
     @RequestMapping(value = "/activity/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllMyAcitivies(@PathVariable("id") int id) {
         //logger.info("Fetching user by id {}", id);
-        Iterable<Activity> myActivites = repository.getAllMyActivites(String.valueOf(id));
+        Iterable<ReturnActivity> myActivites = repository.getAllMyActivites(String.valueOf(id));
 
-        List<Activity> target = new ArrayList<>();
+        List<ReturnActivity> target = new ArrayList<>();
         myActivites.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);

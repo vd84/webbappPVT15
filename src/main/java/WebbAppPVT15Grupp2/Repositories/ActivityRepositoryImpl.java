@@ -1,6 +1,7 @@
 package WebbAppPVT15Grupp2.Repositories;
 
 import WebbAppPVT15Grupp2.Models.Activity;
+import WebbAppPVT15Grupp2.Models.ReturnActivity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
@@ -15,10 +16,12 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
 
     @Override
-    public List<Activity> getAllActivities() {
+    public List<ReturnActivity> getAllActivities(int userid) {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("`sproc_get_all_active_activities`");
+        storedProc.registerStoredProcedureParameter(1, int.class,ParameterMode.IN);
+        storedProc.setParameter(1, userid);
 
 
         return storedProc.getResultList();
@@ -69,7 +72,7 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     }
 
     @Override
-    public List<Activity> getAllMyActivites(String id) {
+    public List<ReturnActivity> getAllMyActivites(String id) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_my_activities");
 
