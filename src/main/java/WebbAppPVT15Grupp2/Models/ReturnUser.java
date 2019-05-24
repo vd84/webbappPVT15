@@ -37,6 +37,7 @@ public class ReturnUser {
     private int role;
     private int isfacebookuser;
     private int avatar;
+    private String avatarurl;
 
     public int getId() {
         return id;
@@ -116,5 +117,13 @@ public class ReturnUser {
 
     public void setAvatar(int avatar) {
         this.avatar = avatar;
+    }
+
+    public String getAvatarurl() {
+        return avatarurl;
+    }
+
+    public void setAvatarurl(String avatarurl) {
+        this.avatarurl = avatarurl;
     }
 }
