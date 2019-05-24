@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.aspectj.bridge.MessageUtil.fail;
@@ -27,7 +26,7 @@ public class WebbappPvt15Application {
         ConfigurableApplicationContext c = SpringApplication.run(WebbappPvt15Application.class, args);
 
         YouthcentreRepository repo = c.getBean(YouthcentreRepository.class);
-        List<ReturnYouthcentre> existingYouthcentres =  ((YouthcentreRepository) repo).getAllYouthcentres(0);
+        List<ReturnYouthcentre> existingYouthcentres =  ((YouthcentreRepository) repo).getAllYouthcentresById(0);
 
         List<ExternalYouthCenter> externalYouthcenters = getExternal();
 
