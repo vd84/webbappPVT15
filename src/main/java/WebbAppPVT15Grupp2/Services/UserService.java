@@ -93,4 +93,21 @@ public class UserService {
 
         return new ResponseEntity<>(target, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/user/nopassword", method = RequestMethod.PUT)
+    public ResponseEntity<?> modifyUserWithoutPassword(@RequestBody User modUser) {
+        logger.info("Modefying User : {}", modUser);
+
+        if(repository.getOneUser(String.valueOf(modUser.getId())) == null){
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+        Iterable<ReturnUser> users = repository.modifyUserWithoutPassword(String.valueOf(modUser.getId()), modUser.getUsername(), modUser.getDisplayname(), String.valueOf(modUser.getActive()), String.valueOf(modUser.getPoints()), String.valueOf(modUser.getFairplaypoints()), String.valueOf(modUser.getCurrentyouthcentre()), String.valueOf(modUser.getRole()), String.valueOf(modUser.getIsFacebookuser()), modUser.getAvatar());
+
+        List<ReturnUser> target = new ArrayList<>();
+        users.forEach(target::add);
+
+        return new ResponseEntity<>(target, HttpStatus.OK);
+    }
+
+
 }
