@@ -129,7 +129,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, String image) {
+    public List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar) {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_update_user_without_password");
 
@@ -162,7 +162,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(7, currentyouthcentre);
         storedProc.setParameter(8, role);
         storedProc.setParameter(9, isFacebookUser);
-        storedProc.setParameter(10, image);
+        storedProc.setParameter(10, avatar);
 
 
 
