@@ -127,4 +127,49 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         return storedProc.getResultList();
     }
+
+    @Override
+    public List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, String image) {
+        StoredProcedureQuery storedProc =
+                em.createNamedStoredProcedureQuery("sproc_update_user_without_password");
+
+
+
+
+        storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+
+
+
+
+
+
+        storedProc.setParameter(1, id);
+        storedProc.setParameter(2, username);
+        storedProc.setParameter(3, displayname);
+        storedProc.setParameter(4, active);
+        storedProc.setParameter(5, points);
+        storedProc.setParameter(6, fairplaypoints);
+        storedProc.setParameter(7, currentyouthcentre);
+        storedProc.setParameter(8, role);
+        storedProc.setParameter(9, isFacebookUser);
+        storedProc.setParameter(10, image);
+
+
+
+        return storedProc.getResultList();
+    }
+
+
+
+
 }
