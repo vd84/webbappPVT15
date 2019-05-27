@@ -20,8 +20,7 @@ public class User {
     private int isFacebookuser;
     private int currentyouthcentre;
     private int role;
-    private String image;
-
+    private int avatar;
 
     public int getId() {
         return id;
@@ -103,11 +102,11 @@ public class User {
         this.role = role;
     }
 
-    public String getImage() {
-        return image;
+    public int getAvatar() {
+        return avatar;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 }
