@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CheckinYouthcentreRepositoryCustom {
     List<CheckinYouthcentre> addCheckinYouthcentreToUser(String user, String youthcentre);
+
+    List<CheckinYouthcentre> getMyYouthcentreCheckins(int userid);
 }

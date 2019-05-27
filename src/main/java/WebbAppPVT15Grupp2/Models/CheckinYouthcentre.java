@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "sproc_checkin_youthcentre",
         procedureName = "sproc_checkin_youthcentre",
+        resultClasses = CheckinYouthcentre.class),
+        @NamedStoredProcedureQuery(name = "sproc_get_my_youthcentre_checkins",
+        procedureName = "sproc_get_my_youthcentre_checkins",
         resultClasses = CheckinYouthcentre.class)
 })
 

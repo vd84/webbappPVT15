@@ -28,6 +28,7 @@ public class Badge {
     private String name;
     private String description;
     private String image;
+    private int badgerange;
 
     public int getId() {
         return id;
@@ -61,4 +62,11 @@ public class Badge {
         this.image = image;
     }
 
+    public int getBadgerange() {
+        return badgerange;
+    }
+
+    public void setBadgerange(int badgerange) {
+        this.badgerange = badgerange;
+    }
 }

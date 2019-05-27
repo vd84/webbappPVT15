@@ -24,4 +24,15 @@ public class CheckinYouthcentreRepositoryImpl implements CheckinYouthcentreRepos
 
         return storedProc.getResultList();
     }
+
+    @Override
+    public List<CheckinYouthcentre> getMyYouthcentreCheckins(int userid) {
+        StoredProcedureQuery storedProc = em .createNamedStoredProcedureQuery("sproc_get_my_youthcentre_checkins");
+
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
+
+        storedProc.setParameter(1,userid);
+
+        return storedProc.getResultList();
+    }
 }

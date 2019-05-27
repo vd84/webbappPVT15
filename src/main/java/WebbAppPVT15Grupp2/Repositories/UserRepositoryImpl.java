@@ -19,8 +19,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_get_all_users");
 
-
         return storedProc.getResultList();
+
     }
 
     @Override

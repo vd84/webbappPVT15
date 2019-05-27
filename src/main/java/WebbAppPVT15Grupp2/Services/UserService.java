@@ -61,6 +61,7 @@ public class UserService {
             //throw new incorrectLogin();
             return new ResponseEntity<>(target, HttpStatus.NO_CONTENT);
         }
+
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)

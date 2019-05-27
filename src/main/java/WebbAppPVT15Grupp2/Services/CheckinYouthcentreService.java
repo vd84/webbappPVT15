@@ -41,13 +41,23 @@ public class CheckinYouthcentreService {
             List<CheckinYouthcentre> target = new ArrayList<>();
             rel.forEach(target::add);
 
-            /*
-            //Hämtar alla badges som en användare redan har
-            Iterable<Badge> usersBadges = badgeRepository.getUsersBadges(checkinyouthcentre.getUserid());
-            List<Badge> existingUserBadges = new ArrayList<>();
-            usersBadges.forEach(existingUserBadges::add);
+            //Hämtar alla checkins som användaren har på ett youthcentre
+            Iterable<CheckinYouthcentre> existingCheckins = repository.getMyYouthcentreCheckins(checkinyouthcentre.getUserid());
 
-            //Kollar om man har FirsCheckinBadge och lägger till den på användaren om man inte har den
+            //Hämtar alla badges som en användare redan har
+            Iterable<Badge> ownedUserBadges = badgeRepository.getUsersBadges(checkinyouthcentre.getUserid());
+            List<Badge> existingUserBadges = new ArrayList<>();
+            ownedUserBadges.forEach(existingUserBadges::add);
+
+            List<Badge> existingCheckinBadges = new ArrayList<>();
+            for(Badge b : existingUserBadges){
+                if(b.getBadgerange() > 1000){
+                    existingCheckinBadges.add(b);
+                }
+            }
+
+
+           /* //Kollar om man har FirsCheckinBadge och lägger till den på användaren om man inte har den
             boolean alreadyHaveFirstCheckinBadge = false;
             for (Badge b : existingUserBadges) {
                 if (b.getId() == 1) {
