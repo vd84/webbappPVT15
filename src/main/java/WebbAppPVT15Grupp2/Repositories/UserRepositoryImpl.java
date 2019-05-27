@@ -145,8 +145,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(10, int.class, ParameterMode.IN);
 
 
 
