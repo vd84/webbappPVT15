@@ -56,7 +56,7 @@ public class CheckinYouthcentreService {
                         addedBadge.forEach(newBadges::add);
                         break;
                     case 5:
-                        addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), THIRD_TIME_VISITOR_BADGE.getId());
+                        addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIFTH_TIME_VISITOR_BADGE.getId());
                         addedBadge.forEach(newBadges::add);
                         break;
                     default:
