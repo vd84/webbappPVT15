@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static WebbAppPVT15Grupp2.Models.Badges_Enum.FIRST_TIME_PARTICIPANT;
-import static WebbAppPVT15Grupp2.Models.Badges_Enum.FIRST_TIME_VISITOR;
 
 @RestController
 @CrossOrigin("*")

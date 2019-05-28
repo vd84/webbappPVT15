@@ -13,11 +13,11 @@ public class CheckinYouthcentreRepositoryImpl implements CheckinYouthcentreRepos
     private EntityManager em;
 
     @Override
-    public List<CheckinYouthcentre> addCheckinYouthcentreToUser(String userid, String youthcentreid) {
+    public List<CheckinYouthcentre> addCheckinYouthcentreToUser(int userid, int youthcentreid) {
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_checkin_youthcentre");
 
-        storedProc.registerStoredProcedureParameter(1,String.class, ParameterMode.IN);
-        storedProc.registerStoredProcedureParameter(2,String.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(1,int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(2,int.class, ParameterMode.IN);
 
         storedProc.setParameter(1, userid);
         storedProc.setParameter(2, youthcentreid);

@@ -27,21 +27,48 @@ public class CheckinYouthcentreService {
 
     //response om användaren redan har loggat in på youthcentre
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "User already checked in on this youthcentre")
-    public class alreadyCheckedin extends RuntimeException{
+    public class alreadyCheckedin extends RuntimeException {
 
     }
 
 
     @RequestMapping(value = "/checkinyouthcentre", method = RequestMethod.POST)
-    public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
-    //public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
+    public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre) {
+        //public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
 
         try {
-            Iterable<CheckinYouthcentre> rel = repository.addCheckinYouthcentreToUser(String.valueOf(checkinyouthcentre.getUserid()), String.valueOf(checkinyouthcentre.getYouthcentreid()));
-            List<CheckinYouthcentre> target = new ArrayList<>();
-            rel.forEach(target::add);
+            Iterable<CheckinYouthcentre> myCheckins = repository.addCheckinYouthcentreToUser(checkinyouthcentre.getUserid(), checkinyouthcentre.getYouthcentreid());
+            List<CheckinYouthcentre> myCheckinArray = new ArrayList<>();
+            myCheckins.forEach(myCheckinArray::add);
 
-            //Hämtar alla checkins som användaren har på ett youthcentre
+
+            try {
+                Iterable<Badge> addedBadge;
+                List<Badge> newBadges = new ArrayList<>();
+
+                switch (myCheckinArray.size()) {
+                    case 1:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIRST_TIME_VISITOR_BADGE.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    case 3:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), THIRD_TIME_VISITOR_BADGE.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    case 5:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), THIRD_TIME_VISITOR_BADGE.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    default:
+
+                }
+
+                return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
+
+            } catch (DataIntegrityViolationException e) {
+                System.out.println("Already have the badge");
+            }
+            /*//Hämtar alla checkins som användaren har på youthcentre
             Iterable<CheckinYouthcentre> existingCheckins = repository.getMyYouthcentreCheckins(checkinyouthcentre.getUserid());
 
             //Hämtar alla badges som en användare redan har
@@ -54,7 +81,7 @@ public class CheckinYouthcentreService {
                 if(b.getBadgerange() > 1000){
                     existingCheckinBadges.add(b);
                 }
-            }
+            }*/
 
 
            /* //Kollar om man har FirsCheckinBadge och lägger till den på användaren om man inte har den
@@ -64,23 +91,23 @@ public class CheckinYouthcentreService {
                     alreadyHaveFirstCheckinBadge = true;
                 }
             }*/
-            try {
+            /*try {
                 List<Badge> newBadges = new ArrayList<>();
                 //if (!alreadyHaveFirstCheckinBadge) {
-                Iterable<Badge> addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIRST_TIME_VISITOR.getId());
+                Iterable<Badge> addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIRST_TIME_VISITOR_BADGE.getId());
 
                 addedBadge.forEach(newBadges::add);
 
-            //}
+                //}
 
-            //skickar tillbaka den nya badgen
-            //return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
-            //skickar tillbaka den länk som skapats
+                //skickar tillbaka den nya badgen
+                //return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
+                //skickar tillbaka den länk som skapats
                 return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
-            }catch (DataIntegrityViolationException e){
+            } catch (DataIntegrityViolationException e) {
                 System.out.println("Already have the badge");
-            }
-        }catch (DataIntegrityViolationException dve){
+            }*/
+        } catch (DataIntegrityViolationException dve) {
             throw new alreadyCheckedin();
 
         }
