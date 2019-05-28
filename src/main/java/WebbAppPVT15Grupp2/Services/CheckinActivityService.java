@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static WebbAppPVT15Grupp2.Models.Badges_Enum.FIRST_TIME_PARTICIPANT;
+import static WebbAppPVT15Grupp2.Models.Badges_Enum.*;
 
 @RestController
 @CrossOrigin("*")
@@ -32,14 +32,30 @@ public class CheckinActivityService {
     @RequestMapping(value = "/checkinactivity", method = RequestMethod.POST)
     public ResponseEntity<List<Badge>> checkinOnActivity(@RequestBody CheckinActivity checkinactivity){
         try {
-            Iterable<CheckinActivity> activityCheckins = repository.addCheckinActivityToUser(String.valueOf(checkinactivity.getUserid()), String.valueOf(checkinactivity.getActivityid()));
+            Iterable<CheckinActivity> myCheckins = repository.addCheckinActivityToUser(String.valueOf(checkinactivity.getUserid()), String.valueOf(checkinactivity.getActivityid()));
+            List<CheckinActivity> myCheckinArray = new ArrayList<>();
+            myCheckins.forEach(myCheckinArray::add);
 
-            List<CheckinActivity> target = new ArrayList<>();
-            activityCheckins.forEach(target::add);
+
             try {
+                Iterable<Badge> addedBadge;
                 List<Badge> newBadges = new ArrayList<>();
-                Iterable<Badge> addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), FIRST_TIME_PARTICIPANT.getId());
-                addedBadge.forEach(newBadges::add);
+
+                switch (myCheckinArray.size()){
+                    case 1:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), FIRST_TIME_PARTICIPANT.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    case 3:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), THIRD_TIME_PARTICIPANT.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    case 5:
+                        addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), FIFTH_TIME_PARTICIPANT.getId());
+                        addedBadge.forEach(newBadges::add);
+                        break;
+                    default:
+                }
 
                 return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
 

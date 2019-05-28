@@ -9,7 +9,9 @@ public enum Badges_Enum {
 
 
     //Activity checkins
-    FIRST_TIME_PARTICIPANT(21);
+    FIRST_TIME_PARTICIPANT(21),
+    THIRD_TIME_PARTICIPANT(32),
+    FIFTH_TIME_PARTICIPANT(33);
 
     private int id;
         Badges_Enum(int id){

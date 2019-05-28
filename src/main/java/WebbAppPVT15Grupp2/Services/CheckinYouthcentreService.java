@@ -68,45 +68,7 @@ public class CheckinYouthcentreService {
             } catch (DataIntegrityViolationException e) {
                 System.out.println("Already have the badge");
             }
-            /*//Hämtar alla checkins som användaren har på youthcentre
-            Iterable<CheckinYouthcentre> existingCheckins = repository.getMyYouthcentreCheckins(checkinyouthcentre.getUserid());
 
-            //Hämtar alla badges som en användare redan har
-            Iterable<Badge> ownedUserBadges = badgeRepository.getUsersBadges(checkinyouthcentre.getUserid());
-            List<Badge> existingUserBadges = new ArrayList<>();
-            ownedUserBadges.forEach(existingUserBadges::add);
-
-            List<Badge> existingCheckinBadges = new ArrayList<>();
-            for(Badge b : existingUserBadges){
-                if(b.getBadgerange() > 1000){
-                    existingCheckinBadges.add(b);
-                }
-            }*/
-
-
-           /* //Kollar om man har FirsCheckinBadge och lägger till den på användaren om man inte har den
-            boolean alreadyHaveFirstCheckinBadge = false;
-            for (Badge b : existingUserBadges) {
-                if (b.getId() == 1) {
-                    alreadyHaveFirstCheckinBadge = true;
-                }
-            }*/
-            /*try {
-                List<Badge> newBadges = new ArrayList<>();
-                //if (!alreadyHaveFirstCheckinBadge) {
-                Iterable<Badge> addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIRST_TIME_VISITOR_BADGE.getId());
-
-                addedBadge.forEach(newBadges::add);
-
-                //}
-
-                //skickar tillbaka den nya badgen
-                //return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
-                //skickar tillbaka den länk som skapats
-                return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
-            } catch (DataIntegrityViolationException e) {
-                System.out.println("Already have the badge");
-            }*/
         } catch (DataIntegrityViolationException dve) {
             throw new alreadyCheckedin();
 
