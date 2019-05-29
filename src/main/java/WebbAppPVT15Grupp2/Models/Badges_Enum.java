@@ -10,7 +10,12 @@ public enum Badges_Enum {
     //Activity checkins
     FIRST_TIME_PARTICIPANT(21),
     THIRD_TIME_PARTICIPANT(32),
-    FIFTH_TIME_PARTICIPANT(33);
+    FIFTH_TIME_PARTICIPANT(33),
+
+    //TraveledDistance
+    THREE_KILOMETER_TRAVLED(34),
+    FIVE_KILOMETER_TRAVLED(35),
+    EIGHT_KILOMETER_TRAVLED(36);
 
     private int id;
 

@@ -69,4 +69,15 @@ public class Badge {
     public void setBadgerange(int badgerange) {
         this.badgerange = badgerange;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Badge){
+            Badge B = (Badge)obj;
+            if(this.getId() == B.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -14,7 +14,7 @@ public interface UserRepositoryCustom {
 
     List<ReturnUser> addUser(String userName, String displayName, String password, String currentYouthCentre, String isFacebookUser);
 
-    List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar);
+    List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar, int travelleddistance);
 
-    List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar);
+    List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar, int travelleddistance);
 }

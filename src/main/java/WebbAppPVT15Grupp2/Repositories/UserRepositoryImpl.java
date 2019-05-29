@@ -67,7 +67,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     @Override
-    public List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar) {
+    public List<ReturnUser> modifyUser(String id, String username, String displayname, String password, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar, int travelleddistance) {
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_update_user");
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -81,6 +81,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(11, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(12, int.class, ParameterMode.IN);
 
         storedProc.setParameter(1, id);
         storedProc.setParameter(2, username);
@@ -93,12 +94,13 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(9, role);
         storedProc.setParameter(10, isFacebookUser);
         storedProc.setParameter(11, avatar);
+        storedProc.setParameter(12, travelleddistance);
 
         return storedProc.getResultList();
     }
 
     @Override
-    public List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar) {
+    public List<ReturnUser> modifyUserWithoutPassword(String id, String username, String displayname, String active, String points, String fairplaypoints, String currentyouthcentre, String role, String isFacebookUser, int avatar, int travelleddistance) {
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_update_user_without_password");
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -111,6 +113,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(10, int.class, ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(11, int.class, ParameterMode.IN);
 
         storedProc.setParameter(1, id);
         storedProc.setParameter(2, username);
@@ -122,6 +125,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         storedProc.setParameter(8, role);
         storedProc.setParameter(9, isFacebookUser);
         storedProc.setParameter(10, avatar);
+        storedProc.setParameter(11, travelleddistance);
 
         return storedProc.getResultList();
     }

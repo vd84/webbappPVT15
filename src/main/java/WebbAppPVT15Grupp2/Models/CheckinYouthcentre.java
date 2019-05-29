@@ -57,4 +57,15 @@ public class CheckinYouthcentre {
     public void setCheckindate(Timestamp checkindate) {
         this.checkindate = checkindate;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof CheckinYouthcentre) {
+            CheckinYouthcentre CYC = (CheckinYouthcentre) obj;
+            if(this.getUserid() == CYC.getUserid() && this.youthcentreid == CYC.getYouthcentreid()){
+                return true;
+            }
+        }
+        return false;
+    }
 }
