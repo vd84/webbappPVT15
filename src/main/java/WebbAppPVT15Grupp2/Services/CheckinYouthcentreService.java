@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 
 import static WebbAppPVT15Grupp2.Models.Badges_Enum.*;
@@ -50,8 +51,10 @@ public class CheckinYouthcentreService {
             ReturnUser user = users.iterator().next();
 
             Iterable<Badge> myBadges = badgeRepository.getUsersBadges(checkinyouthcentre.getUserid());
-            List<Badge> myBadgeArray = new ArrayList<>();
-            myBadges.forEach(myBadgeArray::add);
+            List<Integer> myBadgeIdArray = new ArrayList<>();
+            for (Badge mb : myBadges) {
+                myBadgeIdArray.add(mb.getId());
+            }
 
             Iterable<ReturnYouthcentre> youthcentres = youthcentreRepository.getAllYouthcentresById(0);
             List<ReturnYouthcentre> yothcentresArray = new ArrayList<>();
@@ -62,42 +65,33 @@ public class CheckinYouthcentreService {
             double cycLat = 0;
             double cyclon = 0;
 
-            for(ReturnYouthcentre RYC : yothcentresArray){
-                if (RYC.getId() == checkinyouthcentre.getYouthcentreid()){
+            for (ReturnYouthcentre RYC : yothcentresArray) {
+                if (RYC.getId() == checkinyouthcentre.getYouthcentreid()) {
                     ycLat = RYC.getLat();
                     yclon = RYC.getLon();
                 }
-                if (RYC.getId() == user.getCurrentyouthcentre()){
+                if (RYC.getId() == user.getCurrentyouthcentre()) {
                     cycLat = RYC.getLat();
                     cyclon = RYC.getLon();
                 }
             }
 
-
-
-
-            int dist = (int)calculateDistance(cycLat,cyclon,ycLat,yclon);
-            user.setTravelleddistance(user.getTravelleddistance() + (int)calculateDistance(cycLat,cyclon,ycLat,yclon));
-            userRepository.modifyUserWithoutPassword(String.valueOf(user.getId()),user.getUsername(), user.getDisplayname(),"1", String.valueOf(user.getPoints()), String.valueOf(user.getFairplaypoints()), String.valueOf(user.getCurrentyouthcentre()),String.valueOf(user.getRole()), String.valueOf(user.getRole()),user.getAvatar(), user.getTravelleddistance());
+            user.setTravelleddistance(user.getTravelleddistance() + (int) calculateDistance(cycLat, cyclon, ycLat, yclon));
+            userRepository.modifyUserWithoutPassword(String.valueOf(user.getId()), user.getUsername(), user.getDisplayname(), "1", String.valueOf(user.getPoints()), String.valueOf(user.getFairplaypoints()), String.valueOf(user.getCurrentyouthcentre()), String.valueOf(user.getRole()), String.valueOf(user.getRole()), user.getAvatar(), user.getTravelleddistance());
 
             try {
-                if (user.getTravelleddistance() > 3000 && !myBadgeArray.contains(THREE_KILOMETER_TRAVLED)){
+                if (user.getTravelleddistance() > 3000 && !myBadgeIdArray.contains(THREE_KILOMETER_TRAVLED.getId())) {
                     addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), THREE_KILOMETER_TRAVLED.getId());
                     addedBadge.forEach(newBadges::add);
-
-
                 }
-                if (user.getTravelleddistance() > 5000 && !myBadgeArray.contains(FIVE_KILOMETER_TRAVLED)){
+                if (user.getTravelleddistance() > 5000 && !myBadgeIdArray.contains(FIVE_KILOMETER_TRAVLED.getId())) {
                     addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIVE_KILOMETER_TRAVLED.getId());
                     addedBadge.forEach(newBadges::add);
-
                 }
-                if (user.getTravelleddistance() > 8000 && !myBadgeArray.contains(EIGHT_KILOMETER_TRAVLED)){
+                if (user.getTravelleddistance() > 8000 && !myBadgeIdArray.contains(EIGHT_KILOMETER_TRAVLED.getId())) {
                     addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), EIGHT_KILOMETER_TRAVLED.getId());
                     addedBadge.forEach(newBadges::add);
-
                 }
-
 
                 switch (myCheckinArray.size()) {
                     case 1:
@@ -120,9 +114,6 @@ public class CheckinYouthcentreService {
             } catch (DataIntegrityViolationException e) {
                 System.out.println("Already have the badge");
             }
-
-            //calculate distance-badge
-
         } catch (DataIntegrityViolationException dve) {
             throw new alreadyCheckedin();
         }
@@ -130,7 +121,6 @@ public class CheckinYouthcentreService {
     }
 
     private double calculateDistance(double currentYouthCentreLat, double currentYouthCentreLon, double checkinYouthcentreLat, double checkinYouthCentreLon) {
-
 
 
         double lon1 = currentYouthCentreLon;
@@ -151,11 +141,9 @@ public class CheckinYouthcentreService {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double d = R * c;
 
-
         return d * 1000;
-
-
     }
+
     private double toRad(double x) {
         return x * Math.PI / 180;
     }
