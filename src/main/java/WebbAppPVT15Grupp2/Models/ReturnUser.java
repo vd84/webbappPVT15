@@ -40,6 +40,7 @@ public class ReturnUser {
     private int isfacebookuser;
     private int avatar;
     private String avatarurl;
+    private int travelleddistance;
 
     public int getId() {
         return id;
@@ -127,5 +128,13 @@ public class ReturnUser {
 
     public void setAvatarurl(String avatarurl) {
         this.avatarurl = avatarurl;
+    }
+
+    public int getTravelleddistance() {
+        return travelleddistance;
+    }
+
+    public void setTravelleddistance(int travelleddistance) {
+        this.travelleddistance = travelleddistance;
     }
 }

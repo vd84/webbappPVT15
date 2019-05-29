@@ -19,6 +19,7 @@ public class User {
     private int currentyouthcentre;
     private int role;
     private int avatar;
+    private int travelleddistance;
 
     public int getId() {
         return id;
@@ -106,5 +107,13 @@ public class User {
 
     public void setAvatar(int avatar) {
         this.avatar = avatar;
+    }
+
+    public int getTravelleddistance() {
+        return travelleddistance;
+    }
+
+    public void setTravelleddistance(int travelleddistance) {
+        this.travelleddistance = travelleddistance;
     }
 }
