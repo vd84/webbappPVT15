@@ -10,11 +10,11 @@ import java.sql.Timestamp;
 @Data
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "sproc_checkin_youthcentre",
-        procedureName = "sproc_checkin_youthcentre",
-        resultClasses = CheckinYouthcentre.class),
+                procedureName = "sproc_checkin_youthcentre",
+                resultClasses = CheckinYouthcentre.class),
         @NamedStoredProcedureQuery(name = "sproc_get_my_youthcentre_checkins",
-        procedureName = "sproc_get_my_youthcentre_checkins",
-        resultClasses = CheckinYouthcentre.class)
+                procedureName = "sproc_get_my_youthcentre_checkins",
+                resultClasses = CheckinYouthcentre.class)
 })
 
 public class CheckinYouthcentre {

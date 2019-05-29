@@ -20,7 +20,6 @@ public class AcivityService {
 
     @RequestMapping(value = "/activity", method = RequestMethod.POST)
     public ResponseEntity<?> addActivity(@RequestBody Activity addActivity, UriComponentsBuilder ucBuilder) {
-        //logger.info("Creating User : {}", addActivity);
         Iterable<Activity> users = repository.addActivity(String.valueOf(addActivity.getCreatedby()), addActivity.getStartdate(), addActivity.getEnddate(), String.valueOf(addActivity.getResponsibleuser()), addActivity.getName(), addActivity.getDescription(), addActivity.getAlternativelocation(), String.valueOf(addActivity.getIssuggestion()), String.valueOf(addActivity.getCategory()), String.valueOf(addActivity.getResource()), String.valueOf(addActivity.getChallenger()), String.valueOf(addActivity.getChallenged()));
 
         List<Activity> target = new ArrayList<>();
@@ -35,7 +34,6 @@ public class AcivityService {
 
     @RequestMapping(value = "/allactivity/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllActivites(@PathVariable("id") int id) {
-        //logger.info("Fetching user by id {}", id);
         Iterable<ReturnActivity> allActivities = repository.getAllActivities(id);
 
         List<ReturnActivity> target = new ArrayList<>();
@@ -46,7 +44,6 @@ public class AcivityService {
 
     @RequestMapping(value = "/activity/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllMyAcitivies(@PathVariable("id") int id) {
-        //logger.info("Fetching user by id {}", id);
         Iterable<ReturnActivity> myActivites = repository.getAllMyActivites(String.valueOf(id));
 
         List<ReturnActivity> target = new ArrayList<>();
@@ -57,7 +54,6 @@ public class AcivityService {
 
     @RequestMapping(value = "/activityChallenged/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAllMyAcitiviesChallenged(@PathVariable("id") int id) {
-        //logger.info("Fetching user by id {}", id);
         Iterable<Activity> myActivites = repository.getAllMyActivitesChallenged(String.valueOf(id));
 
         List<Activity> target = new ArrayList<>();
@@ -69,7 +65,7 @@ public class AcivityService {
     @RequestMapping(value = "/activity", method = RequestMethod.PUT)
     public ResponseEntity<?> modifyActivity(@RequestBody Activity modActivity) {
 
-        Iterable<Activity> changedActivity = repository.modifyActivity(modActivity.getId(),modActivity.getStartdate(),modActivity.getEnddate(), modActivity.getName(), modActivity.getDescription(), modActivity.getResponsibleuser(), modActivity.getAlternativelocation(), modActivity.getIssuggestion(), modActivity.getIsactive(), modActivity.getCategory(), modActivity.getResource(), modActivity.getChallenger(), modActivity.getChallenged(), modActivity.getCompleted(), modActivity.getWinner(), modActivity.getChallengeaccepted(),modActivity.getChallengerejected());
+        Iterable<Activity> changedActivity = repository.modifyActivity(modActivity.getId(), modActivity.getStartdate(), modActivity.getEnddate(), modActivity.getName(), modActivity.getDescription(), modActivity.getResponsibleuser(), modActivity.getAlternativelocation(), modActivity.getIssuggestion(), modActivity.getIsactive(), modActivity.getCategory(), modActivity.getResource(), modActivity.getChallenger(), modActivity.getChallenged(), modActivity.getCompleted(), modActivity.getWinner(), modActivity.getChallengeaccepted(), modActivity.getChallengerejected());
 
         List<Activity> target = new ArrayList<>();
         changedActivity.forEach(target::add);
@@ -79,7 +75,6 @@ public class AcivityService {
 
     @RequestMapping(value = "/activity/youthcentre/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getActivityByYouthcentre(@PathVariable("id") int id) {
-        //logger.info("Fetching user by id {}", id);
         Iterable<Activity> youthcentreActivities = repository.getAllActivitiesByYouthCentre(id);
 
         List<Activity> target = new ArrayList<>();

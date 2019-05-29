@@ -7,31 +7,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 
-
-
 @Entity
 @Data
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "sproc_add_activity",
                 procedureName = "sproc_add_activity",
                 resultClasses = Activity.class),
-        /*@NamedStoredProcedureQuery(name = "`sproc_get_all_active_activities`",
-                procedureName = "`sproc_get_all_active_activities`",
-                resultClasses = Activity.class),*/
-        /*@NamedStoredProcedureQuery(name = "sproc_get_my_activities",
-                procedureName = "sproc_get_my_activities",
-                resultClasses = Activity.class),*/
         @NamedStoredProcedureQuery(name = "sproc_get_my_challenges",
                 procedureName = "sproc_get_my_challenges",
                 resultClasses = Activity.class),
         @NamedStoredProcedureQuery(name = "sproc_update_activity",
                 procedureName = "sproc_update_activity",
                 resultClasses = Activity.class),
-        /*@NamedStoredProcedureQuery(name = "sproc_get_activities_by_youthcentre",
-                procedureName = "sproc_get_activities_by_youthcentre",
-                resultClasses = Activity.class),*/
-
-
 })
 public class Activity {
 

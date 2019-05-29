@@ -1,6 +1,5 @@
 package WebbAppPVT15Grupp2.Services;
 
-//import WebbAppPVT15Grupp2.Models.Youthcentre;
 import WebbAppPVT15Grupp2.Models.ReturnYouthcentre;
 import WebbAppPVT15Grupp2.Repositories.YouthcentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class YouthcentreService {
     YouthcentreRepository repository;
 
     @RequestMapping(value = "/youthcentre/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres(@PathVariable("id") int id){
+    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres(@PathVariable("id") int id) {
         Iterable<ReturnYouthcentre> returnYouthcentres = repository.getAllYouthcentresById(id);
 
         List<ReturnYouthcentre> target = new ArrayList<>();
@@ -29,8 +28,8 @@ public class YouthcentreService {
     }
 
     @RequestMapping(value = "/youthcentre", method = RequestMethod.POST)
-    public ResponseEntity<List<ReturnYouthcentre>> addYouthcentre(@RequestBody ReturnYouthcentre addYouthcentre){
-        Iterable<ReturnYouthcentre> youthcentres = repository.addYouthcentre(addYouthcentre.getLon(),addYouthcentre.getLat(),addYouthcentre.getName());
+    public ResponseEntity<List<ReturnYouthcentre>> addYouthcentre(@RequestBody ReturnYouthcentre addYouthcentre) {
+        Iterable<ReturnYouthcentre> youthcentres = repository.addYouthcentre(addYouthcentre.getLon(), addYouthcentre.getLat(), addYouthcentre.getName());
         List<ReturnYouthcentre> target = new ArrayList<>();
         youthcentres.forEach(target::add);
 
@@ -38,14 +37,12 @@ public class YouthcentreService {
     }
 
     @RequestMapping(value = "/youthcentre", method = RequestMethod.GET)
-    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres(){
+    public ResponseEntity<List<ReturnYouthcentre>> getAllYouthcentres() {
 
         Iterable<ReturnYouthcentre> youthcentres = repository.findAll();
         List<ReturnYouthcentre> target = new ArrayList<>();
         youthcentres.forEach(target::add);
 
         return new ResponseEntity<>(target, HttpStatus.OK);
-
     }
-
 }

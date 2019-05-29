@@ -9,7 +9,4 @@ public interface AvatarRepositoryCustom {
     List<Avatar> getAllAvatars();
 
     List<Avatar> getUserAvatar(int id);
-
-
-
 }

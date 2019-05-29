@@ -13,13 +13,12 @@ public class YouthcentreRepositoryImpl implements YouthCentreRepositoryCustom {
     @PersistenceContext
     private EntityManager em;
 
-
     @Override
     public List<ReturnYouthcentre> getAllYouthcentresById(int userid) {
 
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_youthcentres");
 
-        storedProc.registerStoredProcedureParameter(1, int.class,ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
 
         storedProc.setParameter(1, userid);
         return storedProc.getResultList();

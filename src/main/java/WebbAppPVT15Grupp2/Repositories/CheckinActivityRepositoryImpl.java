@@ -6,13 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
-import java.sql.SQLException;
 import java.util.List;
 
-import static com.mysql.cj.conf.PropertyKey.logger;
 
 public class CheckinActivityRepositoryImpl implements CheckinActivityRepositoryCustom {
-
 
     @PersistenceContext
     private EntityManager em;

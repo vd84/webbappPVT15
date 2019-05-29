@@ -10,13 +10,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.util.List;
 
-
 public class ParticipationRepositoryImpl implements ParticipationRepositoryCustom {
-
 
     @PersistenceContext
     private EntityManager em;
-
 
     @Override
     public List<Activity> addParticipation(int userId, int activityId) {
@@ -25,10 +22,8 @@ public class ParticipationRepositoryImpl implements ParticipationRepositoryCusto
         storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2, int.class, ParameterMode.IN);
 
-
         storedProc.setParameter(1, userId);
         storedProc.setParameter(2, activityId);
-
 
         return storedProc.getResultList();
     }
@@ -40,15 +35,11 @@ public class ParticipationRepositoryImpl implements ParticipationRepositoryCusto
         storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2, int.class, ParameterMode.IN);
 
-
         storedProc.setParameter(1, user);
         storedProc.setParameter(2, activity);
 
-
-
         return storedProc.getResultList();
     }
-
 
     @Override
     public List<ReturnActivityParticipation> getParticipationByActivity(int activityId) {
@@ -60,6 +51,4 @@ public class ParticipationRepositoryImpl implements ParticipationRepositoryCusto
 
         return storedProc.getResultList();
     }
-
-
 }

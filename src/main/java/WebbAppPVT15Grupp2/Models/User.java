@@ -1,10 +1,8 @@
 package WebbAppPVT15Grupp2.Models;
 
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 public class User {
 

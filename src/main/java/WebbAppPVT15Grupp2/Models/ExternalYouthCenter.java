@@ -3,7 +3,6 @@ package WebbAppPVT15Grupp2.Models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
@@ -15,8 +14,6 @@ public class ExternalYouthCenter {
     private String id;
     @JsonProperty("Name")
     private String name;
-
-
 
     public ExternalYouthCenter() {
 

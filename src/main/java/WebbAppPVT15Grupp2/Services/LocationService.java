@@ -17,17 +17,16 @@ public class LocationService {
     LocationRepository repository;
 
     @GetMapping("/location")
-    public Iterable<Location> findAllLocations(){
+    public Iterable<Location> findAllLocations() {
         return repository.findAll();
     }
 
     @GetMapping("/location/{id}")
-    public ResponseEntity<?> getLocationByID(@PathVariable("id") int id){
+    public ResponseEntity<?> getLocationByID(@PathVariable("id") int id) {
         Location location = repository.findById((int) id).get();
-        if (location == null){
+        if (location == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Location>(location, HttpStatus.OK);
     }
-
 }

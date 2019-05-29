@@ -28,19 +28,14 @@ public class CheckinYouthcentreService {
     //response om användaren redan har loggat in på youthcentre
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "User already checked in on this youthcentre")
     public class alreadyCheckedin extends RuntimeException {
-
     }
-
 
     @RequestMapping(value = "/checkinyouthcentre", method = RequestMethod.POST)
     public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre) {
-        //public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre){
-
         try {
             Iterable<CheckinYouthcentre> myCheckins = repository.addCheckinYouthcentreToUser(checkinyouthcentre.getUserid(), checkinyouthcentre.getYouthcentreid());
             List<CheckinYouthcentre> myCheckinArray = new ArrayList<>();
             myCheckins.forEach(myCheckinArray::add);
-
 
             try {
                 Iterable<Badge> addedBadge;
@@ -60,7 +55,6 @@ public class CheckinYouthcentreService {
                         addedBadge.forEach(newBadges::add);
                         break;
                     default:
-
                 }
 
                 return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
@@ -71,7 +65,6 @@ public class CheckinYouthcentreService {
 
         } catch (DataIntegrityViolationException dve) {
             throw new alreadyCheckedin();
-
         }
         return null;
     }

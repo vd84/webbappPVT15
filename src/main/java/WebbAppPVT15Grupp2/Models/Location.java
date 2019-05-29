@@ -2,9 +2,8 @@ package WebbAppPVT15Grupp2.Models;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name="location")
+@Table(name = "location")
 public class Location {
 
     @Id

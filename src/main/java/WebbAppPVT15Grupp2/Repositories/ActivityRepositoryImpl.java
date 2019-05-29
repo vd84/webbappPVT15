@@ -20,20 +20,17 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("`sproc_get_all_active_activities`");
-        storedProc.registerStoredProcedureParameter(1, int.class,ParameterMode.IN);
+        storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
         storedProc.setParameter(1, userid);
 
-
         return storedProc.getResultList();
-
     }
 
     @Override
-    public List<Activity> addActivity(String createdby,String startdate, String enddate, String responsibleUser, String activityname, String description, String altLocation, String isSuggestion, String category, String resource, String challenger, String challenged) {
+    public List<Activity> addActivity(String createdby, String startdate, String enddate, String responsibleUser, String activityname, String description, String altLocation, String isSuggestion, String category, String resource, String challenger, String challenged) {
 
         StoredProcedureQuery storedProc =
                 em.createNamedStoredProcedureQuery("sproc_add_activity");
-
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -48,9 +45,6 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(12, String.class, ParameterMode.IN);
 
-
-
-
         storedProc.setParameter(1, createdby);
         storedProc.setParameter(2, startdate);
         storedProc.setParameter(3, enddate);
@@ -64,24 +58,16 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.setParameter(11, challenger);
         storedProc.setParameter(12, challenged);
 
-
-
         return storedProc.getResultList();
-
-
     }
 
     @Override
     public List<ReturnActivity> getAllMyActivites(String id) {
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_my_activities");
-
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_my_activities");
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
 
-
         storedProc.setParameter(1, id);
-
 
         return storedProc.getResultList();
     }
@@ -89,25 +75,18 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
     @Override
     public List<Activity> getAllMyActivitesChallenged(String id) {
 
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_my_challenges");
-
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_my_challenges");
 
         storedProc.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
 
-
         storedProc.setParameter(1, id);
 
-
         return storedProc.getResultList();
-
-
     }
 
     @Override
-    public List<Activity> modifyActivity(int id,String startdate, String enddate, String name, String description, int responsibleUser, String alternativeLocation, int isSuggestion, int isActive, int category, int resource, int challenger, int challenged, int isCompleted, int winner, int challengeaccepted, int challengerejected) {
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_update_activity");
+    public List<Activity> modifyActivity(int id, String startdate, String enddate, String name, String description, int responsibleUser, String alternativeLocation, int isSuggestion, int isActive, int category, int resource, int challenger, int challenged, int isCompleted, int winner, int challengeaccepted, int challengerejected) {
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_update_activity");
 
         storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -126,7 +105,6 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
         storedProc.registerStoredProcedureParameter(15, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(16, int.class, ParameterMode.IN);
         storedProc.registerStoredProcedureParameter(17, int.class, ParameterMode.IN);
-
 
         storedProc.setParameter(1, id);
         storedProc.setParameter(2, startdate);
@@ -151,18 +129,11 @@ public class ActivityRepositoryImpl implements ActivityRepositoryCustom {
 
     @Override
     public List<Activity> getAllActivitiesByYouthCentre(int id) {
-        StoredProcedureQuery storedProc =
-                em.createNamedStoredProcedureQuery("sproc_get_activities_by_youthcentre");
+        StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_activities_by_youthcentre");
 
         storedProc.registerStoredProcedureParameter(1, int.class, ParameterMode.IN);
 
-
-
-
-
         storedProc.setParameter(1, id);
-
-
 
         return storedProc.getResultList();
     }

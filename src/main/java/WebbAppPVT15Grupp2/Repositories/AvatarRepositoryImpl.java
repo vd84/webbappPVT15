@@ -18,8 +18,8 @@ public class AvatarRepositoryImpl implements AvatarRepositoryCustom {
         StoredProcedureQuery storedProc = em.createNamedStoredProcedureQuery("sproc_get_all_avatars");
 
         return storedProc.getResultList();
-
     }
+
     @Override
     public List<Avatar> getUserAvatar(int id) {
 
@@ -31,7 +31,4 @@ public class AvatarRepositoryImpl implements AvatarRepositoryCustom {
 
         return storedProc.getResultList();
     }
-
-
-
 }

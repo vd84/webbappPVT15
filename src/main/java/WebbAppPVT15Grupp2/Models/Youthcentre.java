@@ -1,19 +1,6 @@
 package WebbAppPVT15Grupp2.Models;
 
-import lombok.Data;
-
 import javax.persistence.*;
-
-/*@Entity
-@Data
-@NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "sproc_store_youthcentre",
-                procedureName = "sproc_store_youthcentres",
-                resultClasses = ExternalYouthCenter.class),
-        @NamedStoredProcedureQuery(name = "sproc_get_all_youthcentres",
-                procedureName = "sproc_get_all_youthcentres",
-                resultClasses = Youthcentre.class)
-})*/
 
 public class Youthcentre {
 

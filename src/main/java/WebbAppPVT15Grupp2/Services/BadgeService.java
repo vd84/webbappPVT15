@@ -1,4 +1,5 @@
 package WebbAppPVT15Grupp2.Services;
+
 import WebbAppPVT15Grupp2.Models.Badge;
 import WebbAppPVT15Grupp2.Repositories.BadgeRepository;
 import org.slf4j.Logger;
@@ -37,17 +38,15 @@ public class BadgeService {
         ArrayList<Badge> oneBadge = new ArrayList<>();
         badges.forEach(oneBadge::add);
         return new ResponseEntity<>(oneBadge, HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/badgebyyouthcentre/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Badge>> getBadgeByYouthcentre(@PathVariable("id") int id){
+    public ResponseEntity<List<Badge>> getBadgeByYouthcentre(@PathVariable("id") int id) {
         Iterable<Badge> badges = repository.getYouthcentreBadges(id);
 
         ArrayList<Badge> youthcentreBadges = new ArrayList<>();
         badges.forEach(youthcentreBadges::add);
 
-        return new ResponseEntity<>(youthcentreBadges,HttpStatus.OK);
+        return new ResponseEntity<>(youthcentreBadges, HttpStatus.OK);
     }
-
 }

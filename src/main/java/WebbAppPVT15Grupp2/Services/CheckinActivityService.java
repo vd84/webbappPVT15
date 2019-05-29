@@ -25,23 +25,22 @@ public class CheckinActivityService {
     BadgeRepository badgeRepository;
 
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "User already checked in to this activity")
-    public class alreadyCheckedin extends RuntimeException{
+    public class alreadyCheckedin extends RuntimeException {
 
     }
 
     @RequestMapping(value = "/checkinactivity", method = RequestMethod.POST)
-    public ResponseEntity<List<Badge>> checkinOnActivity(@RequestBody CheckinActivity checkinactivity){
+    public ResponseEntity<List<Badge>> checkinOnActivity(@RequestBody CheckinActivity checkinactivity) {
         try {
             Iterable<CheckinActivity> myCheckins = repository.addCheckinActivityToUser(String.valueOf(checkinactivity.getUserid()), String.valueOf(checkinactivity.getActivityid()));
             List<CheckinActivity> myCheckinArray = new ArrayList<>();
             myCheckins.forEach(myCheckinArray::add);
 
-
             try {
                 Iterable<Badge> addedBadge;
                 List<Badge> newBadges = new ArrayList<>();
 
-                switch (myCheckinArray.size()){
+                switch (myCheckinArray.size()) {
                     case 1:
                         addedBadge = badgeRepository.addBadgeToUser(checkinactivity.getUserid(), FIRST_TIME_PARTICIPANT.getId());
                         addedBadge.forEach(newBadges::add);
@@ -59,12 +58,11 @@ public class CheckinActivityService {
 
                 return new ResponseEntity<>(newBadges, HttpStatus.CREATED);
 
-            }catch (DataIntegrityViolationException e){
+            } catch (DataIntegrityViolationException e) {
                 System.out.println("Already have the badge");
             }
 
-
-        }catch (DataIntegrityViolationException dve){
+        } catch (DataIntegrityViolationException dve) {
             throw new alreadyCheckedin();
         }
         return null;

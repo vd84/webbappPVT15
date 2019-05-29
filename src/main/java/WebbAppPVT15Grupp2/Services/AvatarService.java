@@ -1,8 +1,7 @@
 package WebbAppPVT15Grupp2.Services;
+
 import WebbAppPVT15Grupp2.Models.Avatar;
 import WebbAppPVT15Grupp2.Repositories.AvatarRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +15,6 @@ import java.util.List;
 public class AvatarService {
     @Autowired
     AvatarRepository repository;
-
-    private static final Logger logger = LoggerFactory.getLogger(BadgeService.class);
 
     @RequestMapping(value = "/avatar", method = RequestMethod.GET)
     public ResponseEntity<List<Avatar>> getAllAvatars() {
@@ -37,7 +34,5 @@ public class AvatarService {
         ArrayList<Avatar> avatars = new ArrayList<>();
         avatar.forEach(avatars::add);
         return new ResponseEntity<>(avatars, HttpStatus.OK);
-
     }
-
 }

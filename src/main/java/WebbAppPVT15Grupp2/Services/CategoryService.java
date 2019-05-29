@@ -15,7 +15,7 @@ public class CategoryService {
     CategoryRepository repository;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public Iterable<Category> getAllCategories(){
+    public Iterable<Category> getAllCategories() {
         return repository.findAll();
     }
 }
