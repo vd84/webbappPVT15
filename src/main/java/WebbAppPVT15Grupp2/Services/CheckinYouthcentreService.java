@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-
 
 import static WebbAppPVT15Grupp2.Models.Badges_Enum.*;
 
@@ -33,10 +31,17 @@ public class CheckinYouthcentreService {
     @Autowired
     YouthcentreRepository youthcentreRepository;
 
-    //response om användaren redan har loggat in på youthcentre
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "User already checked in on this youthcentre")
     public class alreadyCheckedin extends RuntimeException {
     }
+
+    /**
+     *
+     * @param checkinyouthcentre - this "parameter" is picked up from the body of the POST request and only difines that incomin data is in the format of a CheckinYouthcentre object
+     * @param checkinyouthcentre.getUserid() - The DB id from the user checking in
+     * @param checkinyouthcentre.getYouthcentreid() -  The DB id for the Youthcentre the user checks in at
+     * @return - Returns a list of badges that the user recived, if no badges was received NULL is returned
+     */
 
     @RequestMapping(value = "/checkinyouthcentre", method = RequestMethod.POST)
     public ResponseEntity<List<Badge>> checkinUser(@RequestBody CheckinYouthcentre checkinyouthcentre) {
@@ -79,6 +84,9 @@ public class CheckinYouthcentreService {
             user.setTravelleddistance(user.getTravelleddistance() + (int) calculateDistance(cycLat, cyclon, ycLat, yclon));
             userRepository.modifyUserWithoutPassword(String.valueOf(user.getId()), user.getUsername(), user.getDisplayname(), "1", String.valueOf(user.getPoints()), String.valueOf(user.getFairplaypoints()), String.valueOf(user.getCurrentyouthcentre()), String.valueOf(user.getRole()), String.valueOf(user.getRole()), user.getAvatar(), user.getTravelleddistance());
 
+            /**
+             * Checking if yhe user should be rewarded badges for distance traveled
+             */
             try {
                 if (user.getTravelleddistance() > 3000 && !myBadgeIdArray.contains(THREE_KILOMETER_TRAVLED.getId())) {
                     addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), THREE_KILOMETER_TRAVLED.getId());
@@ -93,6 +101,9 @@ public class CheckinYouthcentreService {
                     addedBadge.forEach(newBadges::add);
                 }
 
+                /**
+                 * Checking if the user should be rewarded badges for number of youthcentre checkins
+                 */
                 switch (myCheckinArray.size()) {
                     case 1:
                         addedBadge = badgeRepository.addBadgeToUser(checkinyouthcentre.getUserid(), FIRST_TIME_VISITOR_BADGE.getId());
@@ -120,8 +131,16 @@ public class CheckinYouthcentreService {
         return null;
     }
 
-    private double calculateDistance(double currentYouthCentreLat, double currentYouthCentreLon, double checkinYouthcentreLat, double checkinYouthCentreLon) {
+    /**
+     *
+     * @param currentYouthCentreLat - The Latitude of the users "home" youthcentre
+     * @param currentYouthCentreLon - The Longitude of the users "home"
+     * @param checkinYouthcentreLat - The Latitude of the youthcentre the user is checking in at
+     * @param checkinYouthCentreLon - The Longitude of the youthcentre the user is checking in at
+     * @return the distance between the two coordinates in meter, as a double
+     */
 
+    private double calculateDistance(double currentYouthCentreLat, double currentYouthCentreLon, double checkinYouthcentreLat, double checkinYouthCentreLon) {
 
         double lon1 = currentYouthCentreLon;
         double lat1 = currentYouthCentreLat;
