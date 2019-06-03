@@ -163,6 +163,11 @@ public class CheckinYouthcentreService {
         return d * 1000;
     }
 
+    /**
+     * Converts degrees to radians
+     * @param x - Degrees to be converted
+     * @return x converted to radians
+     */
     private double toRad(double x) {
         return x * Math.PI / 180;
     }
